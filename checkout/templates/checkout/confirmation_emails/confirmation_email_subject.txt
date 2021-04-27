@@ -1,1 +1,1 @@
-Boutique Ado Confirmation for Order Number {{ order.order_number }}
+B_fitness_store Confirmation for Order Number {{ order.order_number }}
