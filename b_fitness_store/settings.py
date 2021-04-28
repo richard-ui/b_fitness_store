@@ -25,7 +25,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['b-fitness-django-app.herokuapp.com', 'localhost']
 
-
+#
 # Application definition
 
 INSTALLED_APPS = [
