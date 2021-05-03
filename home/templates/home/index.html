@@ -31,7 +31,7 @@
     <script>
         $(function () {
             $("#product").autocomplete({
-                source: "{% url 'autocomplete' %}",
+                source: ("{% url 'autocomplete' %}"),
                 minLength: 2
             });
         });

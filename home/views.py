@@ -3,7 +3,7 @@ import json
 from django.http import JsonResponse
 from django.shortcuts import render
 
-from home.models import Product
+from home.models import Product_item
 
 
 def index(request):
@@ -14,9 +14,10 @@ def index(request):
 
 def autocomplete(request):
     if 'term' in request.GET:
-        qs = Product.objects.filter(Name__icontains=request.GET.get('term'))
+        qs = Product_item.objects.filter(title__icontains=request.GET.get('term'))
         titles = list()
         for product in qs:
             titles.append(product.title)
+        # titles = [product.title for product in qs]
         return JsonResponse(titles, safe=False)
-    return render(request, 'home/index.html')
+    return render(request, 'home/home.html')
