@@ -11,6 +11,20 @@
 
 {% block content %}
 
+    <form>
+        <label for="product">Product</label>
+        <input type="text" name="product" id="product">
+    </form>
+
+    <script>
+        $(function () {
+            $("#product").autocomplete({
+                source: "{% url 'autocomplete' %}",
+                minLength: 2
+            });
+        });
+    </script>
+
 
     <div class="container h-100">
         <div class="row h-100">

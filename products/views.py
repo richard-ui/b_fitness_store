@@ -1,9 +1,11 @@
+import json
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
+from django.http import JsonResponse
 from .models import Product, Category
 from .forms import ProductForm
 
@@ -149,3 +151,14 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+def auto(request):
+    if 'term' in request.GET:
+        qs = Product.objects.filter(name__icontains=request.GET.get('term'))
+        titles = list()
+        for product in qs:
+            titles.append(product.name)
+
+        return JsonResponse(titles, safe=False)
+    return render(request, 'products/products.html')

@@ -3,13 +3,8 @@ import json
 from django.http import JsonResponse
 from django.shortcuts import render
 
-from home.models import Product_item
-
-
-def index(request):
-    """ A view to return the index page """
-
-    return render(request, 'home/index.html')
+# Create your views here.
+from core.models import Product_item
 
 
 def autocomplete(request):
@@ -20,4 +15,4 @@ def autocomplete(request):
             titles.append(product.title)
         # titles = [product.title for product in qs]
         return JsonResponse(titles, safe=False)
-    return render(request, 'home/index.html')
+    return render(request, 'core/home.html')
