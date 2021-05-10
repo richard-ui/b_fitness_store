@@ -78,6 +78,11 @@
                                                 </a>
                                             </p>
                                             {% endif %}
+                                            {% if product.category.name == "new_arrivals" %}
+                                                <p class="small mt-1 mb-0">
+                                                    <h5><span class="badge badge-warning">New</span></h5>
+                                                </p>
+                                            {% endif %}
                                             {% if product.rating %}
                                                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                                             {% else %}
