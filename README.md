@@ -30,29 +30,27 @@ and purchase.
 
 - As a First time user, I want to be able to navigate the site in an easy and efficient way without any complex design.
 
-- As a First Time user, I want to be able to register
+- As a First Time user, I want to be able to register an Account
 
-- As a First Time user, I want to be able to browse and search for recipes 
+- As a First Time user, I want to be able to see a list of products displayed on the products page.
 
-- As a First Time user, I want to get inspiration for a recipe to make myself.
+- As a First Time user, I want to be able to add a new product to my shopping bag.
 
 ### Returning User's:
 
-- As a returning user, I want to be able to log in easily and efficiently. 
+- As a returning user, I want to be able to log in easily and efficiently.
 
-- As a returning user, I want to be able to view my recipes on my own profile page. 
+- As a returning user, I want to be able to view my shopping bag and be able to update accordingly.
 
-- As a returning user, I want to be able to edit my existing recipes.
-
-- As a returning user, I want to be able to delete existing recipes.
-
-- As a returning user, I want to be able to add new recipes 
-
-- As a returning user I want to be able to search a recipe from an input box and see suggestions depending on which letters I type. 
+- As a returning user, I want to be able to purchase the current products in my shopping bag.
 
 ### Admin goals: 
 
-- As an Admin, I want to be able to Add, edit and delete Products.
+- As an Admin, I want to be able to add a new product.
+
+- As an Admin I want to be able to update or delete a specific product.
+
+- As an Admin, I want to be a able to view a more detailed specification of the product I am interested in buying.
 
 # Design
 
@@ -61,7 +59,7 @@ and purchase.
   are bright so that the user can follow them easier. 
 
 2. Typography
-- The 'Lucida Bright' font is the main font used throughout the website with Times and Serif as the fallback fonts in case for any reason the font is not supported by the browser.
+- The 'ubuntu' font is the main font used throughout the website with Sans-Serif as the fallback font in case for any reason the font is not supported by the browser.
 
 # Wireframes
 
@@ -90,13 +88,13 @@ and purchase.
 # Features
 | Feature  | Details |
 | ------------- | ------------- |
-| Register  | The User can create an account which will be saved to the database and used to login for future use.   |
+| Register  | The User can create an account which will be saved to the database and there details will be saved for future use.   |
 | Login  | The user can log into their own account with personalised features.  |
 | Log out  | There is a log out functionality on the page - this is especially important for users of a shared device.   |
-| Add recipe   | Users can contribute to the site via the add recipe form.  |
-| Edit recipe form | Users are able to edit their own recipes. An important note here is that users can only edit their own recipes.   |
-| Delete recipe   | Users are able to delete their own recipes. As above, this can only be done with the user's own recipes.  |
-| Search function   | The users are able to search the recipe database by ingredient and recipe name. This function is available whether a user is logged in/registered or not.  |
+| Add Product   | Admins can contribute adding a new product via the Add Product Page  |
+| Edit Product | Admins are able to edit any of the available products.   |
+| Delete Product   | Admins are able to delete their own products.  |
+| Search function   | The users are able to search the product by 'Name'. This function is available whether a user is logged in or not.  |
 
 # Features left to implement
 | Feature  | Details |
@@ -108,10 +106,6 @@ and purchase.
 - I defined an upload method in my python code to generate an upload for the image. However after displaying to Heroku the images for each recipe would not display
   I then did some research and talked to my mentor, as they suggested that i use a server based application to save an image file. I used the 'Cloudinary' application to store
   my image files their. They would then be retrieved from my mongodb database and onto the webpage.
-
-- There is an issue with the drop down menu when searching for a recipe. If the user pressed the search button without selecting an option from the menu, an error would run saying
-  the route is displaying null. To fix this, I accidentally was using disabled selected on the dropdown element. However when removing this, it fixed the problem and would display the no results
-  found message.
 
 # Testing
 
@@ -277,8 +271,7 @@ Forking the repsoitory means we are making a copy of the original version to edi
 12. When app is completed downloading, press 'Open app' from the header dashboard which will open up the app in a new tab in your browser.
 
 # Content
-- The images of each recipes came from Google images, using the Advanced search setting.
-- BBC good food website for recipe idea's and content.
+- The images of each Exercise product came from Google images.
 
 # Credits
 ## Code
