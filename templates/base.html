@@ -45,17 +45,11 @@
     <header class="container-fluid fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
             <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                <span style="font-size: 1.8rem; text-decoration: underline wavy red;" class="logo-font text-black my-0 mr-3"><strong>B</strong>-Fit Store</span>
+                <span style="font-size: 1.8rem; text-decoration: underline wavy red;" class="text-black my-0 mr-3"><strong>B</strong>-Fit Store</span>
                 <i style="color: grey" class="fas fa-dumbbell fa-2x" aria-hidden="true"></i>
             </a>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerItem" aria-controls="navbarTogglerItem" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerItem">
             
-            <ul class="navbar-nav mt-2 mt-lg-0">
+            <ul class="navbar-nav d-none d-sm-block mt-2 mt-lg-0 mr-auto">
                 <li class="list-inline-item dropdown">
                     <a class="text-white btn-outline bg-black font-weight-bold nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
@@ -92,7 +86,7 @@
                </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'products' %}">
+            <form class="form-inline my-2 my-lg-0 d-none d-sm-inline-block" method="GET" action="{% url 'products' %}">
                 <input class="form-control border-black rounded-0" type="text" name="q" id="product" placeholder="Search products...">
                 <div class="input-group-append">
                     <button class="form-control btn border border-black rounded-0" style="background-color: #FF0000;" type="submit">
@@ -102,81 +96,29 @@
                     </button>
                 </div>
             </form>
-            </div>
-        </nav>
-
-        <nav class="bg-light">
-            <div class="d-flex bd-highlight mb-3">
-                <div class="mr-auto p-2 bd-highlight">
-                        <a href="{% url 'home' %}" class="nav-link mr-auto p-2 bd-highlight">
-                    <span style="font-size: 1.8rem; text-decoration: underline wavy red;" class="logo-font text-black my-0 mr-3"><strong>B</strong>-Fit Store</span>
-                    <i style="color: grey" class="fas fa-dumbbell fa-2x" aria-hidden="true"></i>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerItem" aria-controls="navbarTogglerItem" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                </div>
-
-
-                <div class="p-2 bd-highlight">
-                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'products' %}">
-                        <input class="form-control border-black rounded-0" type="text" name="q" id="product" placeholder="Search products...">
-                        <div class="input-group-append">
-                            <button class="form-control btn border border-black rounded-0" style="background-color: #FF0000;" type="submit">
-                                <span class="icon" style="color: #fff">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="p-2 bd-highlight">
-                   <a class="text-white btn-outline bg-black font-weight-bold nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="text-center">
-                            <div><i class="fas fa-user fa-lg"></i></div>
-                            <p class="my-0">My Account</p>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu border border-danger" aria-labelledby="user-options">
-                        {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser %}
-                                <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-                            {% endif %}
-                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                            {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                            {% endif %}
-                    </div>
-                </div>
-                
-                <div class="p-2 bd-highlight">
-                    <a class="text-white btn-outline bg-black font-weight-bold nav-link" href="{% url 'view_bag' %}">
-                        <div class="text-center">
-                            <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                            <p class="my-0">
-                                {% if grand_total %}
-                                    £{{ grand_total|floatformat:2 }}
-                                {% else %}
-                                    £0.00
-                                {% endif %}
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
         </nav>
     
-            <script>
+           <script>
                 $(function () {
-                    $("#product").autocomplete({
-                        source: "{% url 'auto' %}",
-                        minLength: 2
-                    });
+                    $("#product").autocomplete({source: "{% url 'auto' %}", minLength: 2})
+                    .data("ui-autocomplete")._renderItem = function(ul, item){
+                        var expression = new RegExp(this.term, "gi");
+                        var answer = item.label.replace(expression, "<span style='font-weight:bold;'>" + this.term + "</span>");
+                        return $("<li></li>")
+                        .append("<a>" + answer + "</a>")
+                        .appendTo(ul);
+                    };
                 });
+                
             </script>
+
+            <div class="ui-widget">
+                <input placeholder="ui-state-highlight" />
+                </div>
+
+            <div class="ui-widget">
+                <input placeholder="bold-text" />
+            </div>
 
 
         <div class="row bg-light">
