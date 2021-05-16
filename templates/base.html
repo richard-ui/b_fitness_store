@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
     {% endblock %}
 
     {% block extra_css %}
@@ -51,7 +52,7 @@
             
             <ul class="navbar-nav d-none d-sm-block mt-2 mt-lg-0 mr-auto">
                 <li class="list-inline-item dropdown">
-                    <a class="text-white btn-outline bg-black font-weight-bold nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="text-white btn-outline bg-black font-weight-bold hvr-float-shadow nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
                             <div><i class="fas fa-user fa-lg"></i></div>
                             <p class="my-0">My Account</p>
@@ -71,7 +72,7 @@
                     </div>
                 </li>
                 <li class="list-inline-item">
-                    <a class="text-white btn-outline bg-black font-weight-bold nav-link" href="{% url 'view_bag' %}">
+                    <a class="text-white btn-outline bg-black font-weight-bold hvr-float-shadow nav-link" href="{% url 'view_bag' %}">
                         <div class="text-center">
                             <div><i class="fas fa-shopping-cart fa-lg"></i></div>
                             <p class="my-0">
@@ -86,7 +87,7 @@
                </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0 d-none d-sm-inline-block" method="GET" action="{% url 'products' %}">
+            <form class="form-inline mt-3 d-none d-sm-inline-block mr-5" method="GET" action="{% url 'products' %}">
                 <input class="form-control border-black rounded-0" type="text" name="q" id="product" placeholder="Search products...">
                 <div class="input-group-append">
                     <button class="form-control btn border border-black rounded-0" style="background-color: #FF0000;" type="submit">
@@ -111,15 +112,6 @@
                 });
                 
             </script>
-
-            <div class="ui-widget">
-                <input placeholder="ui-state-highlight" />
-                </div>
-
-            <div class="ui-widget">
-                <input placeholder="bold-text" />
-            </div>
-
 
         <div class="row bg-light">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
