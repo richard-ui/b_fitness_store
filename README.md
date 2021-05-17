@@ -103,9 +103,9 @@ and purchase.
 
 # Bugs
 
-- I defined an upload method in my python code to generate an upload for the image. However after displaying to Heroku the images for each recipe would not display
-  I then did some research and talked to my mentor, as they suggested that i use a server based application to save an image file. I used the 'Cloudinary' application to store
-  my image files their. They would then be retrieved from my mongodb database and onto the webpage.
+- Once I found a way to implement jQuery's Autocomplete functionality, there was an issue with the list of product suggestions displayed from the search box.
+  It would display behind the 'main-nav' and the 'delivery banner' elements. I fixed this by customizing the z-index of the 'ui-autocomplete' class in the css file so it would display infront of
+  everything that it should.
 
 # Testing
 
@@ -114,14 +114,12 @@ and purchase.
 
 - As a First Time user, I want to understand the main concept of the site and learn the intention of its relevance.
 
-  i. Upon entering the site, it is clear to the user that the website is about food, due to the sites vibrant colours and clear
-  background image of food displayed on the body.
+  i. Upon entering the site, it is clear to the user that the website is about something to do with Gym and Fitness, due to the sites background image. Also the use of dark colours on the site make
+     it apparant makes the user feel that they are in a gym environment.
   
-  ii. These links are also dynamic as specific links will be shown depending on whether the user is logged in or not.
-
 - As a First time user, I want to be able to navigate the site in an easy and efficient way without any complex design.
 
-  i. The navigation is clear and bright using bold text for the linksto identify each.
+  i. The navigation is clear, with most of the site being a dark theme, the navigation is white making it stand out to the user.
   
   ii. These links are also dynamic as specific links will be shown depending on whether the user is logged in or not.
 
@@ -276,16 +274,12 @@ Forking the repsoitory means we are making a copy of the original version to edi
 # Credits
 ## Code
 - Slack was used to gather information about what jQuery code to use for implementing an image upload function() to the Cloudinary server.
-- W3schools was a helpful website for searching how to validate forms with attributes.
-- For the Password strength generator, I used snippets of code from a Youtube video and made it my own. This was from ['Web dev simplified's'](https://www.youtube.com/watch?v=7-1VZ2wF8pw) channel, that shows how to implement a password feature using JavaScript.
-- Stack overflow to help with the User Authentication providing a decorator function to Validate a people into a page if they want to access a page from the url. Here at [Stack Overflow](https://stackoverflow.com/questions/65434221/prevent-users-from-directly-accessing-url-and-redirect-to-login-if-not-logged-in)
 
 # Acknowledgements
-- Holly-ford Github. It Provided me help to submit an array of ingredients/steps to the database using jQuery.
 - My Mentor provided me with help and provided me access to Holly’s repository to view. This allowed me to locate the issues in my code and improve functionality that I may have been struggling with.
 - Slack was used to help me with the image upload, so it can be used on the server.
 
- My friends and family who helped to test the site and to add recipes 
+ My friends and family who helped to test the site and to test payments of products.
 
 - Girlfriend - Alexandra Connolly 
 
