@@ -11,5 +11,5 @@ urlpatterns = [
         views.delete_product,
         name='delete_product'
         ),
-    path('auto', views.auto, name='auto'),
+    path('auto', views.auto, name='auto'),  # url for search box autocomplete
 ]
