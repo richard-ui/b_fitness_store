@@ -269,7 +269,9 @@ Forking the repsoitory means we are making a copy of the original version to edi
 12. When app is completed downloading, press 'Open app' from the header dashboard which will open up the app in a new tab in your browser.
 
 # Content
-- The images of each Exercise product came from Google images.
+- The product images were took from Sports Direct.
+- 'Sports Direct' was used for clothing Descriptions.
+- Powerhouse Fitness was used for Exercise Equipment Descriptions.
 
 # Credits
 ## Code
