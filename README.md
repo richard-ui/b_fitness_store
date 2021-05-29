@@ -242,31 +242,40 @@ Forking the repsoitory means we are making a copy of the original version to edi
 
 ### Deployment to Heroku
 
-1. Using the gitpod terminal, create requirements.txt and Procfile using these 2 commands:
+1. Install **gunicorn** from the terminal: `pip3 install gunicorn`
+2. Freeze this into the **requirements.txt** file: `pip3 freeze > requirements.txt`
+3. Create a **Procfile**, To tell Heroku to create a web dyno. add this to the file.
+   - web: gunicorn <project_name>.wsgi:application
+4. Now Push these newly created files to github using git push.
+5. From terminal type 'heroku config:set DISABLE_COLLECTSTATIC=1 --app <APP_NAME>', So that Heroku won't try to collect static files when we deploy.
+6. In **settings.py** use this to connect to Heroku Host 'ALLOWED_HOSTS = ['<APP_NAME>.herokuapp.com', 'localhost'] 
+7. Log in to **Heroku**.
+8. Select Create new app from the dropdown menu in the heroku dashboard.
+9. Choose a name for your new app.
+10. Navigate to the Deploy tab and under deployment method choose GitHub.
+11. Press Connect to GitHub and enter your Github repository that you want to associate with. Now click connect.
+12. Go to **Settings** tab, and under Config Vars choose **Reveal config Vars**.
+13. Now enter the following values into the required slots inside the table.
 
-   - `pip3 freeze --local > requirements.txt`
-   - `echo web: python app.py > Procfile`
+Key	                Value
+AWS_ACCESS_KEY_ID       <YOUR_AWS_KEY>
+AWS_SECRET_ACCESS_KEY   <YOUR_AWS_SECRET_KEY>
+DATBASE_URL             <POSTGRES_LINK>
+EMAIL_HOST_PASS         <EMAIL_HOST_PASS_KEY>
+EMAIL_HOST_USER         <GMAIL_ACCOUNT_NAME>
+SECRET_KEY              <APP_SECRET_KEY>
+STRIPE_PUBLIC_KEY       <YOUR_STRIPE_PUBLIC_KEY>
+STRIPE_SECRET_KEY       <YOUR_STRIPE_SECRET_KEY>  
+STRIPE_WH_SECRET        <STRIPE_WEBHOOK_SECRET_KEY>
+USE_AWS                 True
 
-2. These will be added to your directory. Now Push these newly created files to github using git push.
-3. Log in to Heroku.
-4. Select Create new app form the dropdown menu in the heroku dashboard.
-5. Choose a name for your new app.
-6. Navigate to the Deploy tab and under deployment method choose GitHub.
-7. Press Connect to GitHub and enter your Github repository that you want to associate with. Now click connect.
-8. Go to Settings tab, and under Config Vars choose Reveal config Vars.
-9. Now enter the following values into the required slots inside the table. These must match values created in the env.py file you created.
+DISABLE_COLLECTSTATIC	1
 
-| Key  | Value |
-| ------------- | ------------- |
-| IP  | 0.0.0.0   |
-| PORT  | 5000  |
-| SECRET_KEY  | <app_secret_key> |
-| MONGO_URI   | mongodb+srv://root:r00tUser@<cluster_name>.e6xdc.mongodb.net/<database_name>?retryWrites=true&w=majority  |
-| MONGO_DBNAME | <database_name> |
-
-10. Navigate back to the Deploy tab and under Automatic deploys choose Enable Automatic Deploys.
-11. Under Manual deploy, select master and click Deploy Branch.
-12. When app is completed downloading, press 'Open app' from the header dashboard which will open up the app in a new tab in your browser.
+14. In settings.py add the **secret key** from heroku:
+    - SECRET_KEY = os.environ.get('SECRET_KEY, '')
+15. Navigate back to the **Deploy** tab and under Automatic deploys choose **Enable Automatic Deploys**.
+16. Under Manual deploy, select master and click **Deploy Branch**.
+17. When app is completed downloading, press **Open app** from the header dashboard which will open up the app in a new tab in your browser.
 
 # Content
 - The product images were took from Sports Direct.
