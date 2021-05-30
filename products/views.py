@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.template.loader import render_to_string
 
 from django.http import JsonResponse
 from .models import Product, Category
@@ -140,20 +141,39 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+# @login_required
+# def delete_product(request, product_id):
+#     """ Delete a product from the store """
+#     if not request.user.is_superuser:  # check to see if a superuser
+#         messages.error(request, 'Sorry, only store owners can do that.')
+#         return redirect(reverse('home'))
+
+#     product = get_object_or_404(Product, pk=product_id)  # get product_id
+#     product.delete()
+#     messages.success(request, 'Product deleted!')
+#     return redirect(reverse('products'))
+
+
 @login_required
 def delete_product(request, product_id):
-    """ Delete a product from the store """
-    if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
-
     product = get_object_or_404(Product, pk=product_id)
-    product.delete()
-    messages.success(request, 'Product deleted!')
-    return redirect(reverse('products'))
+    data = dict()
+    if request.method == 'POST':
+        product.delete()
+        data['form_is_valid'] = True  # This is just to play along with the existing code
+        products = Product.objects.all()
+        messages.success(request, 'Product deleted!')
+        return redirect(reverse('products'))
+    else:
+        context = {'product': product}
+        data['html_form'] = render_to_string('products/includes/partial_book_delete.html',
+            context,
+            request=request,
+        )
+    return JsonResponse(data)
 
 
-def auto(request):
+def auto(request):  # autocomplete function for search box
     if 'term' in request.GET:
         qs = Product.objects.filter(name__icontains=request.GET.get('term'))
         titles = list()

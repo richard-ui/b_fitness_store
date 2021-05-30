@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+<form method="post" action="{% url 'book_create' %}" class="js-book-create-form">
+  {% csrf_token %}
+  {{ form }}
+  <div class="form-group">
+    <button type="submit" class="btn btn-success">
+      <span class="glyphicon glyphicon-ok"></span>Submit
+    </button>
+    <a href="{% url 'home' %}" class="btn btn-default">Cancel</a>
+  </div>
+</form>
+    
+{% endblock %}

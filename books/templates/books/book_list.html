@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+  <script src="{% static 'books/js/books.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <h1 class="page-header">Books</h1>
+        <p>
+            <button type="button" class="btn btn-primary js-create-book">
+            <span class="glyphicon glyphicon-plus"></span>
+                New book
+            </button>
+        </p>
+    <table class="table table-light" id="book-table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Type</th>
+            <th>Publication date</th>
+            <th>Pages</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.get_book_type_display }}</td>
+            <td>{{ book.publication_date }}</td>
+            <td>{{ book.pages }}</td>
+            <td>{{ book.price }}</td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm js-delete-book" data-url="{% url 'book_delete' book.id %}">
+                    <i class="far fa-trash-alt"></i> Delete
+                </button>
+            </td>
+            </tr>
+        {% empty %}
+            <tr>
+            <td colspan="7" class="text-center bg-warning">No book</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p>Click me!</p>
+
+    
+
+    <!-- THE MODAL WE WILL BE USING -->
+
+    <div class="modal fade" id="modal-book">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+        </div>
+    </div>
+        
+    </div>
+    
+{% endblock %}
+
+{% block postloadjs %}
+    <script type="text/javascript">
+        $(function () {
+
+        var loadForm = function () {
+            var btn = $(this);
+            $.ajax({
+            url: btn.attr("data-url"),
+            type: 'get',
+            dataType: 'json',
+            beforeSend: function () {
+                $("#modal-book").modal("show");
+            },
+            success: function (data) {
+                $("#modal-book .modal-content").html(data.html_form);
+            }
+            });
+        };
+
+
+        $("#book-table").on("click", ".js-delete-book", loadForm);
+        $("#modal-book").on("submit", ".js-book-delete-form", saveForm);
+
+        });
+    </script>
+{% endblock %}

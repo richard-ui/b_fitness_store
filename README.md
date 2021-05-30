@@ -255,19 +255,21 @@ Forking the repsoitory means we are making a copy of the original version to edi
 10. Navigate to the Deploy tab and under deployment method choose GitHub.
 11. Press Connect to GitHub and enter your Github repository that you want to associate with. Now click connect.
 12. Go to **Settings** tab, and under Config Vars choose **Reveal config Vars**.
-13. Now enter the following values into the required slots inside the table.
+13. Now enter the following values into the required slots in the table:
 
-Key	                Value
-AWS_ACCESS_KEY_ID       <YOUR_AWS_KEY>
-AWS_SECRET_ACCESS_KEY   <YOUR_AWS_SECRET_KEY>
-DATBASE_URL             <POSTGRES_LINK>
-EMAIL_HOST_PASS         <EMAIL_HOST_PASS_KEY>
-EMAIL_HOST_USER         <GMAIL_ACCOUNT_NAME>
-SECRET_KEY              <APP_SECRET_KEY>
-STRIPE_PUBLIC_KEY       <YOUR_STRIPE_PUBLIC_KEY>
-STRIPE_SECRET_KEY       <YOUR_STRIPE_SECRET_KEY>  
-STRIPE_WH_SECRET        <STRIPE_WEBHOOK_SECRET_KEY>
-USE_AWS                 True
+| Key  | Value |
+| ------------- | ------------- |
+| AWS_ACCESS_KEY_ID  |<YOUR_AWS_KEY>   |
+| AWS_SECRET_ACCESS_KEY  | <YOUR_AWS_SECRET_KEY>  |
+| DATBASE_URL  | <POSTGRES_LINK> |
+| EMAIL_HOST_PASS   | <EMAIL_HOST_PASS_KEY>  |
+| EMAIL_HOST_USER | <GMAIL_ACCOUNT_NAME> |
+| SECRET_KEY | <APP_SECRET_KEY> |
+| STRIPE_PUBLIC_KEY  | <YOUR_STRIPE_PUBLIC_KEY>  |
+| STRIPE_SECRET_KEY  | <YOUR_STRIPE_SECRET_KEY>  |
+| STRIPE_WH_SECRET | <STRIPE_WEBHOOK_SECRET_KEY> |
+| USE_AWS  | True |
+
 
 DISABLE_COLLECTSTATIC	1
 
@@ -285,6 +287,8 @@ DISABLE_COLLECTSTATIC	1
 # Credits
 ## Code
 - Slack was used to gather information about what jQuery code to use for implementing an image upload function() to the Cloudinary server.
+- For the deletion of products, I used a defensive approach for the admin user, by placing a modal popup to confirm deletion.
+  The code to help with this came from [CRUD USING AJAX & JSON](hhttps://simpleisbetterthancomplex.com/tutorial/2016/11/15/how-to-implement-a-crud-using-ajax-and-json.html)
 
 # Acknowledgements
 - My Mentor provided me with help and provided me access to Holly’s repository to view. This allowed me to locate the issues in my code and improve functionality that I may have been struggling with.
@@ -292,7 +296,5 @@ DISABLE_COLLECTSTATIC	1
 
  My friends and family who helped to test the site and to test payments of products.
 
-- Girlfriend - Alexandra Connolly 
-
-- Father – Gary Jones 
+- Girlfriend - Alexandra Connolly
 
