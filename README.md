@@ -286,9 +286,8 @@ DISABLE_COLLECTSTATIC	1
 
 # Credits
 ## Code
-- Slack was used to gather information about what jQuery code to use for implementing an image upload function() to the Cloudinary server.
 - For the deletion of products, I used a defensive approach for the admin user, by placing a modal popup to confirm deletion.
-  The code to help with this came from [CRUD USING AJAX & JSON](hhttps://simpleisbetterthancomplex.com/tutorial/2016/11/15/how-to-implement-a-crud-using-ajax-and-json.html)
+  The code to help with this came from [CRUD USING AJAX & JSON](https://simpleisbetterthancomplex.com/tutorial/2016/11/15/how-to-implement-a-crud-using-ajax-and-json.html)
 
 # Acknowledgements
 - My Mentor provided me with help and provided me access to Holly’s repository to view. This allowed me to locate the issues in my code and improve functionality that I may have been struggling with.
@@ -298,3 +297,4 @@ DISABLE_COLLECTSTATIC	1
 
 - Girlfriend - Alexandra Connolly
 
+- Friend - Ashley Wilson
