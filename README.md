@@ -2,7 +2,7 @@
 
 ## B-Fitness Store
 
-- Link to Project - [View](https://rickys-recipe-manager.herokuapp.com/)
+- Link to Project - [View](https://b-fitness-django-app.herokuapp.com/)
 
 ![All_Devices](/static/img/responsive_image.png)
 
@@ -13,13 +13,13 @@ and purchase.
 
 ## Target Audience
 
-- The website is aimed at people who are interested in Exercise, generally who are keen Gym goers and wish to browse for items
-  that will benefit there exercise.
+- The website is aimed at people who are interested in Exercise, Shoppers who are keen Gym goers and wish to browse/buy items
+  that will fulfill there exercise needs.
 
 ## Data Details for Admin (test purposes for examiner to use)
 
 - Username: rick123  
-- Password: Muffin1234!
+- Password: muffin11
 
 
 # UX User Stories
@@ -42,7 +42,19 @@ and purchase.
 
 - As a returning user, I want to be able to view my shopping bag and be able to update accordingly.
 
-- As a returning user, I want to be able to purchase the current products in my shopping bag.
+- As a Shopper, I want to be able to see more information about the certain product I am interested in buying.
+
+- As a Shopper, I want to be able to search for a product by Name or Description.
+
+- As a Shopper, I want to be able to search a product by Category
+
+- As a Shopper, I want to be able to adjust the quantity of the items in my bag
+
+- As a Shopper, I want to be able to purchase the current products in my shopping bag.
+
+- As a Shopper, I want to be able to view my shopping bag and be able to update accordingly.
+
+- As a User, I want to register & login to my account
 
 ### Admin goals: 
 
@@ -56,7 +68,7 @@ and purchase.
 
 1. Colour Scheme
 - The use of dark and light colours are used together in contrast on the page. For example the body is dark to represent a gym environment, whereas the Navigation bar/headings
-  are bright so that the user can follow them easier. 
+  are bright and big so that the user can see them easily.
 
 2. Typography
 - The 'ubuntu' font is the main font used throughout the website with Sans-Serif as the fallback font in case for any reason the font is not supported by the browser.
@@ -94,7 +106,7 @@ and purchase.
 | Add Product   | Admins can contribute adding a new product via the Add Product Page  |
 | Edit Product | Admins are able to edit any of the available products.   |
 | Delete Product   | Admins are able to delete their own products.  |
-| Search function   | The users are able to search the product by 'Name'. This function is available whether a user is logged in or not.  |
+| Search function   | The users are able to search the product by 'Name' or 'Description'. This function is available whether a user is logged in or not.  |
 
 # Features left to implement
 | Feature  | Details |
@@ -104,7 +116,7 @@ and purchase.
 # Bugs
 
 - Once I found a way to implement jQuery's Autocomplete functionality, there was an issue with the list of product suggestions displayed from the search box.
-  It would display behind the 'main-nav' and the 'delivery banner' elements. I fixed this by customizing the z-index of the 'ui-autocomplete' class in the css file so it would display infront of
+  It would display behind the 'main-nav' and the 'delivery banner' elements. I fixed this by customizing the z-index of the 'ui-autocomplete' class in the base.css file so it would display infront of
   everything that it should.
 
 # Testing
@@ -288,6 +300,8 @@ DISABLE_COLLECTSTATIC	1
 ## Code
 - For the deletion of products, I used a defensive approach for the admin user, by placing a modal popup to confirm deletion.
   The code to help with this came from [CRUD USING AJAX & JSON](https://simpleisbetterthancomplex.com/tutorial/2016/11/15/how-to-implement-a-crud-using-ajax-and-json.html)
+- To help me with displaying the autocomplete suggestions infront of the navigation bar, I used [Stack Overflow](https://stackoverflow.com/questions/6762174/jquery-uis-autocomplete-not-display-well-z-index-issue) 
+- Credited the autocomplete search functionality from '[codebands](https://www.youtube.com/watch?v=-oLVZp1NQVE)' channel on Youtube.
 
 # Acknowledgements
 - My Mentor provided me with help and provided me access to Holly’s repository to view. This allowed me to locate the issues in my code and improve functionality that I may have been struggling with.
