@@ -34,19 +34,17 @@ and purchase.
 
 - As a First Time user, I want to be able to see a list of products displayed on the products page.
 
-- As a First Time user, I want to be able to add a new product to my shopping bag.
+### Shopping User's:
 
-### Returning User's:
-
-- As a returning user, I want to be able to log in easily and efficiently.
-
-- As a returning user, I want to be able to view my shopping bag and be able to update accordingly.
-
-- As a Shopper, I want to be able to see more information about the certain product I am interested in buying.
+- As a Shopper, I want to be able to log in easily and efficiently.
 
 - As a Shopper, I want to be able to search for a product by Name or Description.
 
 - As a Shopper, I want to be able to search a product by Category
+
+- As a Shopper, I want to be able to view my shopping bag and be able to update accordingly.
+
+- As a Shopper, I want to be able to see more information about the certain product I am interested in buying.
 
 - As a Shopper, I want to be able to adjust the quantity of the items in my bag
 
@@ -54,15 +52,11 @@ and purchase.
 
 - As a Shopper, I want to be able to view my shopping bag and be able to update accordingly.
 
-- As a User, I want to register & login to my account
-
 ### Admin goals: 
 
 - As an Admin, I want to be able to add a new product.
 
 - As an Admin I want to be able to update or delete a specific product.
-
-- As an Admin, I want to be a able to view a more detailed specification of the product I am interested in buying.
 
 # Design
 
