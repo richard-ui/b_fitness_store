@@ -140,35 +140,25 @@ and purchase.
   
   ii. They can also use the dropdown list with the option 'All Products' which perform the same request.
 
-### Returning User's:
+### Shopper User's:
 
-- As a returning user, I want to be able to log in easily and efficiently.
-  
-  i.  In the navbar a link named 'login' will take me to the login page.
+- As a Shopper, I want to be able to log in easily and efficiently.
 
-  ii. If they are a registered user, typing in their username and password will log them in.
+- As a Shopper, I want to be able to search for a product by Name or Description.
 
-- As a returning user, I want to be able to view my recipes on my own profile page.
+- As a Shopper, I want to be able to search a product by Category
 
-  i. Created recipes made by the user can be displayed on the recipes/home page or their profile page once logged in.
+- As a Shopper, I want to be able to view my shopping bag and be able to update accordingly.
 
-- As a returning user, I want to be able to edit my existing recipes.
+- As a Shopper, I want to be able to see more information about the certain product I am interested in buying.
 
-  i. All my recipes on the recipes page provide edit buttons.
+  i. 
 
-  ii. When the edit button is clicked, this will take me to the edit recipe page with existing data displayed in the input boxes.
+- As a Shopper, I want to be able to adjust the quantity of the items in my bag
 
-  iii. This will allow me to update multiple values, after the edit button is clicked, all values for that recipe will be updated.
+- As a Shopper, I want to be able to purchase the current products in my shopping bag.
 
-- As a returning user, I want to be able to delete existing recipes.
-
-  i. For each recipe a red delete button will be displayed below it. When pressed, a modal will appear asking for confirmation of deletion.
-
-- As a returning user, I want to be able to add new recipes.
-
-  i. A form allows for user input with creating a new recipe, inlcluding name, image and cuisine.
-
-- As a returning user I want to be able to search a recipe from an input box and see suggestions depending on which letters I type.
+- As a Shopper, I want to be able to view my shopping bag and be able to update accordingly.
 
 ### Admin User's:
 

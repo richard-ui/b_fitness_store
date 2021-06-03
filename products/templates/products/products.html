@@ -181,4 +181,27 @@
         })
     </script>
 
+    <script type="text/javascript">
+        $(function () {
+
+        $(".js-delete-product").click(function () {
+            var btn = $(this);
+            $.ajax({
+            url: btn.attr("data-url"),
+            type: 'get',
+            dataType: 'json',
+            beforeSend: function () {
+                $("#modal-product").modal("show");
+            },
+            success: function (data) {
+                $("#modal-product .modal-content").html(data.html_form);
+            }
+            });
+        });
+
+        //$("#book-table").on("click", ".js-delete-product", loadForm);
+        $("#modal-product").on("submit", ".js-product-delete-form");
+
+        });
+    </script>
 {% endblock %}
