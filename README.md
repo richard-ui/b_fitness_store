@@ -56,7 +56,9 @@ and purchase.
 
 - As an Admin, I want to be able to add a new product.
 
-- As an Admin I want to be able to update or delete a specific product.
+- As an Admin I want to be able to update a specific product.
+
+- As an Admin, I want to be able to delete a product.
 
 # Design
 
@@ -120,33 +122,23 @@ and purchase.
 
 - As a First Time user, I want to understand the main concept of the site and learn the intention of its relevance.
 
-  i. Upon entering the site, it is clear to the user that the website is about something to do with Gym and Fitness, due to the sites background image. Also the use of dark colours on the site make
-     it apparant makes the user feel that they are in a gym environment.
-  
+  i. Upon entering the site, users are automatically greeted with a clean and easily readable bootstrap navigation bar, with the Title and logo of a Dumbell that clearly represents exercise.
+
+  ii. The Background is an image of weight training, therefore the user can understand a quick and efficent way to understand that the site sells 'GYM' equipment.
+
 - As a First time user, I want to be able to navigate the site in an easy and efficient way without any complex design.
 
-  i. The navigation is clear, with most of the site being a dark theme, the navigation is white making it stand out to the user.
+  i. The use of a navigation bar is at the top of the page with links and 'icons' to emphasise them.
+
+- As a First Time user, I want to be able to register an Account
+
+  i. The user can navigate to the register page by going to the account link on the navbar. Depending on whether they are logged in or not it will show different drop down options.
+
+- As a First Time user, I want to be able to see a list of products displayed on the products page.
   
-  ii. These links are also dynamic as specific links will be shown depending on whether the user is logged in or not.
-
-- As a First Time user, I want to be able to register
-
-  i. In the navbar a link named register that when clicked will take the user to the register page.
-
-  ii. They will then create using a username and password
-
-- As a First Time user, I want to be able to browse and search for recipes.
-
-  i. A card is displayed on the homepage allowing me to type in a recipe and click the seasrch button beside it.
-  Recipes will display below.
+  i. When the user first visits, the home page displays a shop now button which they can use to navigate the products page. This opens up a table of products that the user can see.
   
-  ii. If no recipes are found a "No results found" message will warn the user immediately.
-
-- As a First Time user, I want to get inspiration for a recipe to make myself.
-
-  i. The images have an effect on what food the user may desire
-  
-  ii. The Cuisines list in the dropdown provide nationalities, as they view them, they can think of recipes from one of these Countrie's.
+  ii. They can also use the dropdown list with the option 'All Products' which perform the same request.
 
 ### Returning User's:
 
@@ -180,22 +172,18 @@ and purchase.
 
 ### Admin User's:
 
-- As an Admin, I want recipes added via the site to be stored in the correct format in the database. (jpg, png etc)
+- As an Admin, I want to be able to add a new product.
+  
+  i. The admin can access the products management page from the accounts navigation link. From here they can enter information into a form creating a new product.
 
-  i. Images that are about to be uploaded are validated for PNG or JPEG for formats.
+- As an Admin I want to be able to update a specific product.
+  
+  i. When admin enters the product page, underneath each item there is an to option to delete. When pressed an edit product page will appear and
+     allows admin to customize the product.
 
-- As an Admin, I want to be able to see who has added each recipe.
-
-  i. Once logged in, The recipes page displays each recipe along with the User name who created it.
-
-- As an Admin, I want to be able to Add, edit and delete recipes
-
-  i. On the Recipes page their our edit and delete buttons below each recipe. They can interact with these as they wish.
-
-- As an Admin, I want to be able to Add, edit and delete cuisine types.
-
-  i. When the Admin is logged in, the 'Manage Cuisine's' tab on the navbar will display. Clicking this will take the user to the cuisines page
-     where each cuisine will have an edit and delete button. From their they can modify as they wish.
+- As an Admin, I want to be able to delete a product.
+  
+  i. Admin clicks the red delete button on any product, then a Modal will display asking them confirmation to delete.
 
 ### Further Testing
 
