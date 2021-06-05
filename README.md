@@ -40,9 +40,9 @@ and purchase.
 
 - As a Shopper, I want to be able to search for a product by Name or Description.
 
-- As a Shopper, I want to be able to search a product by Category
+- As a Shopper, I want to be able to see a list of suggestions concerning the products.
 
-- As a Shopper, I want to be able to view my shopping bag and be able to update accordingly.
+- As a Shopper, I want to be able to search a product by Category
 
 - As a Shopper, I want to be able to see more information about the certain product I am interested in buying.
 
@@ -144,21 +144,42 @@ and purchase.
 
 - As a Shopper, I want to be able to log in easily and efficiently.
 
+  i. If the user has an account, they can login by navigating the 'Account' tab and pressing Sign in.
+
 - As a Shopper, I want to be able to search for a product by Name or Description.
+
+  i. Once the user has typed in their some letters into the search box, they can press the red search button which will load a list of products relating to the word.
+
+- As a Shopper, I want to be able to see a list of suggestions concerning the products.
+
+  i. The user can type 3 letters into the search box and a list of product suggestions will display concerning them letters in bold.
 
 - As a Shopper, I want to be able to search a product by Category
 
-- As a Shopper, I want to be able to view my shopping bag and be able to update accordingly.
+  i. As soon as the user enters the website there is a number of dropped lists with certain categories inside them. If the user clicks one, a list of products relating to that category will display on the page.
+
+  ii. These categories include sorting "by price" and "by rating", with "gym equipment" and "sports shoes" being some of the product categories to name a few.
 
 - As a Shopper, I want to be able to see more information about the certain product I am interested in buying.
 
-  i. 
+  i. On the products page, the User can click on any single product where they will enter a product detail page to read about it. This displays more details about the product, that the user may not of seen otherwise. 
 
 - As a Shopper, I want to be able to adjust the quantity of the items in my bag
 
+  i. The use of a dropdown box is next to item on the product page.
+
+  ii. This stores a list of numbers that the user can select to adjust the quantity.
+
 - As a Shopper, I want to be able to purchase the current products in my shopping bag.
 
+  i. After the customer is happy with their current products, they can press the buy now button and a notification will appear at the top navigation alerting them that the payment has been made. A notification should also be sent to their email
+     confirming that the payment went through.
+
 - As a Shopper, I want to be able to view my shopping bag and be able to update accordingly.
+
+  i. The user can click on the 'Shopping cart' Icon with the price of the shop underneath it on the navigation bar.
+
+  ii. If their is items in their cart, the user can update the items quantity or decide to remove it.
 
 ### Admin User's:
 
