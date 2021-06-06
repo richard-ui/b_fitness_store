@@ -60,9 +60,12 @@ body {
     bottom: 38px;
     left: 200px;
 }
+
 .js-delete-book{
     font-size: 1em;
 }
+
+/* font awesome icons */
 .icon {
     align-items: center;
     display: inline-flex;
@@ -71,6 +74,7 @@ body {
     width: 1.5rem;
 }
 
+ /* shop now button on home page*/
 .shop-now-button {
     background: #FF0000;
     color: white;
@@ -99,7 +103,10 @@ body {
     color: black;
 }
 .drop-menu:hover{
-    background: #000;
+    background: red;
+}
+.drop-menu1:hover{
+    background: grey;
 }
 
 .shop-now-button:hover,
@@ -138,6 +145,7 @@ a.category-badge > span.badge:hover {
     color: #fff !important;
 }
 
+/* back to top button */
 .btt-button {
     height: 2.625rem;
     width: 2.625em;
@@ -146,12 +154,14 @@ a.category-badge > span.badge:hover {
     right: 0.625rem;
 }
 
+/* back to top link, update product link & remove link */
 .btt-link,
 .update-link,
 .remove-item {
     cursor: pointer;
 }
 
+/* search box suggestions */
 .ui-autocomplete {
     position: absolute;
     top: 0;
