@@ -71,7 +71,7 @@ and purchase.
 
 # Wireframes
 
-- Computer Wireframe - [View](https://github.com/richard-ui/Data-Centric-Project/blob/master/static/img/recipe_page.pdf) 
+- Computer Wireframe - [View](https://github.com/richard-ui/b_fitness_store/blob/master/media/product-page-computer.png) 
 
 - Mobile Wireframe - [View](https://github.com/richard-ui/Data-Centric-Project/blob/master/static/img/recipe_page_mobile.pdf)
 
@@ -85,7 +85,7 @@ and purchase.
 7. Git
 8. GitHub
 9. Gitpod
-10. Balsamiq
+10. WireframePro
 11. Python and Python3
 12. Django
 13. Heroku
@@ -295,6 +295,7 @@ DISABLE_COLLECTSTATIC	1
   The code to help with this came from [CRUD USING AJAX & JSON](https://simpleisbetterthancomplex.com/tutorial/2016/11/15/how-to-implement-a-crud-using-ajax-and-json.html)
 - To help me with displaying the autocomplete suggestions infront of the navigation bar, I used [Stack Overflow](https://stackoverflow.com/questions/6762174/jquery-uis-autocomplete-not-display-well-z-index-issue) 
 - Credited the autocomplete search functionality from '[codebands](https://www.youtube.com/watch?v=-oLVZp1NQVE)' channel on Youtube.
+- Used Code from this website to provide the page with pagination options. [Django Pagination](https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html)
 
 # Acknowledgements
 - My Mentor provided me with help and provided me access to Holly’s repository to view. This allowed me to locate the issues in my code and improve functionality that I may have been struggling with.

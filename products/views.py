@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.template.loader import render_to_string
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.http import JsonResponse
 from .models import Product, Category
@@ -21,6 +22,11 @@ def all_products(request):
     categories = None
     sort = None
     direction = None
+
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(products, 20)
+
 
     if request.GET:
         if 'sort' in request.GET:
@@ -57,6 +63,13 @@ def all_products(request):
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
 
     context = {
         'products': products,

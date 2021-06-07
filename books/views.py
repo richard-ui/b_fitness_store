@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
 from django.template.loader import render_to_string
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Book
 from .forms import BookForm
@@ -17,7 +18,17 @@ from .forms import BookForm
 
 
 def book_list(request):
-    books = Book.objects.all()
+    book_list = Book.objects.all()  # books
+
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(book_list, 5)
+    try:
+        books = paginator.page(page)
+    except PageNotAnInteger:
+        books = paginator.page(1)
+    except EmptyPage:
+        books = paginator.page(paginator.num_pages)
     return render(request, 'books/book_list.html', {'books': books})
 
 
