@@ -73,7 +73,7 @@ and purchase.
 
 - Computer Wireframe - [View](https://github.com/richard-ui/b_fitness_store/blob/master/media/product-page-computer.png) 
 
-- Mobile Wireframe - [View](https://github.com/richard-ui/Data-Centric-Project/blob/master/static/img/recipe_page_mobile.pdf)
+- Mobile Wireframe - [View](https://github.com/richard-ui/b_fitness_store/blob/master/media/mobile-responsive.png)
 
 # Technologies Used
 
