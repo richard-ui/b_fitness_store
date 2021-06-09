@@ -163,7 +163,7 @@ a.category-badge > span.badge:hover {
     top: 0;
     left: 0;
     cursor: default;
-    z-index:9050!important;
+    z-index: 9050!important;
 }
 
 /*

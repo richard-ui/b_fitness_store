@@ -6,24 +6,26 @@ from products.models import Product
 
 def bag_contents(request):
 
-    bag_items = []
+    bag_items = [] # create array object
     total = 0
     product_count = 0
-    bag = request.session.get('bag', {})
+    bag = request.session.get('bag', {}) # created bag session
 
-    for item_id, item_data in bag.items():
-        if isinstance(item_data, int):
+    # for loop to loop through shop bag items
+    for item_id, item_product in bag.items():
+        if isinstance(item_product, int):
+            # get current product id
             product = get_object_or_404(Product, pk=item_id)
-            total += item_data * product.price
-            product_count += item_data
+            total += item_product * product.price
+            product_count += item_product # product count
             bag_items.append({
-                'item_id': item_id,
-                'quantity': item_data,
+                'item_id': item_id,   # append id, quantity and product 
+                'quantity': item_product,
                 'product': product,
             })
         else:
             product = get_object_or_404(Product, pk=item_id)
-            for size, quantity in item_data['items_by_size'].items():
+            for size, quantity in item_product['items_by_size'].items():
                 total += quantity * product.price
                 product_count += quantity
                 bag_items.append({
@@ -40,7 +42,7 @@ def bag_contents(request):
         delivery = 0
         free_delivery_delta = 0
 
-    grand_total = delivery + total
+    grand_total = delivery + total # grand total taking into consideration the delivery cost.
 
     context = {
         'bag_items': bag_items,
@@ -52,4 +54,4 @@ def bag_contents(request):
         'grand_total': grand_total,
     }
 
-    return context
+    return context # context available in shopping bag template files
