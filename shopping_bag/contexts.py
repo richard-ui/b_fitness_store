@@ -13,6 +13,7 @@ def bag_contents(request):
 
     # for loop to loop through shop bag items
     for item_id, item_product in bag.items():
+        # execute code if item has no sizes
         if isinstance(item_product, int):
             # get current product id
             product = get_object_or_404(Product, pk=item_id)
@@ -35,10 +36,14 @@ def bag_contents(request):
                     'size': size,
                 })
 
+    # if bag total less than '50'
     if total < settings.FREE_DELIVERY_THRESHOLD:
+        # delivery = bag total x 10%
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+        # free delivery delta = how much user would need to spend for free delivery
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
+        # else reset delivery charge to 0.
         delivery = 0
         free_delivery_delta = 0
 
@@ -54,4 +59,4 @@ def bag_contents(request):
         'grand_total': grand_total,
     }
 
-    return context # context available in shopping bag template files
+    return context # context available in any template file thoughout app

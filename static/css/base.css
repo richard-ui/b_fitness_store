@@ -12,7 +12,8 @@ body {
 .bold-text {
     font-weight: bold;
 }
-/* Float Shadow */
+/* Float Shadow effect for navigation links */
+
 .hvr-float-shadow {
   display: inline-block;
   vertical-align: middle;
@@ -171,6 +172,61 @@ input[name='q']::placeholder {
     color: 	#FF6347;
 }
 */
+
+/*  --- Footer --- */
+
+footer {
+    background-color: #000;
+    color: #fafafa;
+    margin: 0;
+    bottom: 0;
+    padding: 1rem;
+}
+
+.social-links {
+    padding-bottom: 0.9375em;
+}
+
+.social-links li a i {
+    width: 2.1875rem;
+    margin-right: 2.1875rem;
+    height: 2.1875rem;
+    padding: 0.75rem 0;
+    border-radius: 50%;
+    font-size: 1rem;
+    line-height: 0.625rem;
+    text-align: center;
+    color: #000;
+    background: #fafafa;
+    
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.social-links li a i:hover {
+    background: #fff;
+    color:red;
+}
+
+/* Bounce In Hover effect for Footer icons */
+
+.list-inline-item-foot {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.list-inline-item-foot:hover, .list-inline-item-foot:focus, .list-inline-item-foot:active {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
 
 /* ---- bootstrap toasts --- */
 

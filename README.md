@@ -78,7 +78,8 @@ and purchase.
 # Technologies Used
 
 1. Bootstrap 4.5
-2. Google Chrome 
+2. Google Chrome
+3. Hover.css
 4. JavaScript 
 5. Font Awesome
 6. jQuery
@@ -102,12 +103,15 @@ and purchase.
 | Add Product   | Admins can contribute adding a new product via the Add Product Page  |
 | Edit Product | Admins are able to edit any of the available products.   |
 | Delete Product   | Admins are able to delete their own products.  |
-| Search function   | The users are able to search the product by 'Name' or 'Description'. This function is available whether a user is logged in or not.  |
+| Search function   | The Users are able to search the product by 'Name' or 'Description'. This function is available whether a user is logged in or not.  |
+| Add Product to bag   | Users can add as many products as they like to the bag which they can then view in the shop bag page to review.  |
+| Remove Product from bag | A User can delete existing product from bag.  |
+| Update bag | A User can update their bag by updating the products quantity.  |
+
 
 # Features left to implement
-| Feature  | Details |
-| ------------- | ------------- |
-| Pagination  | I would of liked the recipes to be listed by (5) records of recipes per page, but unfortunately it became more confusing and unfortunately I ran out of time.   |
+
+- N/A
 
 # Bugs
 
@@ -240,7 +244,7 @@ Forking the repsoitory means we are making a copy of the original version to edi
 2. Click the download icon under the relevant section to clone with either HTTPS, SSH or GitHub CLI
 3. In Git Bash, change the current directory to the location you want the directory to be stored
 4. Type git clone and then paste the URL you copied in step 2
-5. An example for HTTPS: git clone https://github.com/richard-ui/Data-Centric-Project
+5. An example for HTTPS: git clone https://github.com/richard-ui/b_fitness_store
 6. Press enter - that's it, your clone has been completed!
 
 ## Heroku
