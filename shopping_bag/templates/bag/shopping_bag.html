@@ -24,7 +24,7 @@
 
         <div class="row">
             <div class="col">
-                {% if bag_items %}
+                {% if bag_items %} <!-- from contexts.py file -->
                     <div class="d-block d-md-none">
                         <div class="row">
                             <div class="col">
@@ -37,7 +37,7 @@
                                 <p class="text-muted mb-5">A summary of your bag contents is below</p>
                             </div>
                         </div>
-                        {% for item in bag_items %}
+                        {% for item in bag_items %} <!-- for loop to loop through bag items array -->
                             <div class="row">
                                 <div class="col-12 col-sm-6 mb-2">
                                     {% include "bag/product-image.html" %}

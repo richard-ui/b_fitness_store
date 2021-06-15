@@ -21,8 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = False
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['b-fitness-django-app.herokuapp.com', 'localhost']
 
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'widget_tweaks',
+    'reviews',
     
     # Other
     'crispy_forms',
