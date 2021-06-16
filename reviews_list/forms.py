@@ -1,5 +1,5 @@
 from django import forms
-from .models import Review
+from .models import Reviews_list
 from products.models import Product
 from django.forms import TextInput, Textarea
 
@@ -7,7 +7,7 @@ from django.forms import TextInput, Textarea
 class ReviewForm(forms.ModelForm):
 
     class Meta:
-        model = Review
+        model = Reviews_list
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):

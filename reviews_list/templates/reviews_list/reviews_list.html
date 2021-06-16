@@ -21,8 +21,10 @@
             </div>
         </div>
 
+
          <div class="row">
             <div class="product-container col-10 offset-1">
+                <a class="btn btn-light btn-outline-dark rounded mb-2" href="{% url 'add_review' %}">Add Your Own Review</a>
                 <div class="row">
                     {% for review in reviews %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
@@ -46,6 +48,7 @@
                                             {% else %}
                                                 <p>No User</p>
                                             {% endif %}
+                                               <p><small class="mx-auto"><strong>Date Created:</strong> {{ review.date }}</small></p>
                                         </div>
                                     </div>
                                 </div>

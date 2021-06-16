@@ -100,10 +100,11 @@ body {
 .btn-outline:hover,
 .btn-outline:active,
 .btn-outline:focus {
-    background: red;
+    background: black;
+    color: white;
 }
 .drop-menu:hover{
-    background: red;
+    background: red; /* up hill */
 }
 
 .shop-now-button:hover,
