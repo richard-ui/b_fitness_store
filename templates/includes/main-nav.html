@@ -5,6 +5,8 @@
              	All Products
              </button>
 
+             <!-- sort and direction requests -->
+
             <div class="dropdown-menu border border-danger" aria-labelledby="all-products-link">
                 <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <hr class="dropdown-divider">
@@ -21,6 +23,8 @@
              	Clothing
              </button>
 
+             <!-- category requests -->
+             
             <div class="dropdown-menu border border-danger" aria-labelledby="clothing-link">
                 <a href="{% url 'products' %}?category=shirts" class="dropdown-item">Tops &amp; Shirts</a>
                 <hr class="dropdown-divider">
@@ -58,7 +62,7 @@
                 <hr class="dropdown-divider">
                 <a href="{% url 'products' %}?category=deals" class="dropdown-item">Deals</a>
                 <hr class="dropdown-divider">
-                <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?category=new_arrivals,deals" class="dropdown-item">All Specials</a>
             </div>
         </li>
     </ul>

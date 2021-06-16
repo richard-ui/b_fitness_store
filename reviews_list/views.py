@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Reviews_list
 from .forms import ReviewForm
+from profiles.models import UserProfile
 
 # Create your views here.
 
@@ -13,6 +14,7 @@ def all_reviews(request):
     reviews = Reviews_list.objects.all()  # fetch reviews
     context = {
         'reviews': reviews,
+        #'data' : [1, 2, 3, 4, 5],
     }
 
     return render(request, 'reviews_list/reviews_list.html', context)
@@ -23,16 +25,12 @@ def add_review(request):
     """ Add a Review for a product """
 
     if request.method == 'POST': # validate form
-        form_data = {
-            "user": request.user,
-            "product": request.POST.get('product'),
-            "review": request.POST.get('review'),
-            "rating": request.POST.get('rating'),
-        }
-        #form = ReviewForm(form_data)
-        form = ReviewForm(request.POST, form_data)
+        form = ReviewForm(request.POST)
+
         if form.is_valid():     
-            form.save() # form save
+            instance = form.save(commit=False) # form save/form instance
+            instance.user = UserProfile.objects.get(user=request.user)
+            instance.save()
             messages.success(request, 'Your Review has been Added!')
             return redirect(reverse('reviews_list'))
         else:

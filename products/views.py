@@ -22,6 +22,7 @@ def all_products(request):
     categories = None
     sort = None
     direction = None # set all variables to none at first
+    paginator = None
 
     page = request.GET.get('page', 1)
 
@@ -43,7 +44,7 @@ def all_products(request):
                     sortkey = f'-{sortkey}'  # order products in descending order
             products = products.order_by(sortkey) # order by products from value of sortkey
 
-        if 'category' in request.GET:
+        if 'category' in request.GET: # gets category request
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
@@ -76,7 +77,7 @@ def all_products(request):
 
     context = {
         'products': products,
-        'search_term': query,
+        'search_term': query, # search box
         'current_categories': categories,
         'current_sorting': current_sorting,
     }
