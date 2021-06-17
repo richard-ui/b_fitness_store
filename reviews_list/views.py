@@ -5,6 +5,7 @@ from .models import Reviews_list
 from .forms import ReviewForm
 from profiles.models import UserProfile
 from django.db.models import Q
+from django.db.models.functions import Lower
 
 # Create your views here.
 
@@ -12,11 +13,26 @@ def all_reviews(request):
    
     """ A view to show all products, including sorting and search queries """
 
+    # set all variables to none at first
     reviews = Reviews_list.objects.all()  # fetch reviews
     query = None
+    sort = None
+    direction = None
 
     # search request function
     if request.GET:
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'product':
+                sortkey = 'lower_name'
+                reviews = reviews.annotate(lower_name=Lower('product')) # convert to lowercase
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'  # order products in descending order
+            reviews = reviews.order_by(sortkey) # order by products from value of sortkey
+
         if 'q' in request.GET: 
             query = request.GET['q'] # listens for input
             if not query:  # if query is empty provide error
@@ -32,9 +48,12 @@ def all_reviews(request):
             )
             reviews = reviews.filter(queries) # filter out products
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'reviews': reviews,
         'search_term': query, # search box
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'reviews_list/reviews_list.html', context)

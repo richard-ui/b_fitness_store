@@ -24,13 +24,13 @@
 
          <div class="row">
             <div class="product-container col-10 offset-1">   
-                <div class="row bg-light my-auto">       
-                    <div class="col-12 col-md-3">
-                        <a class="btn btn-light btn-outline-dark rounded mb-2" href="{% url 'add_review' %}">Add Your Own Review</a>
+                <div class="row bg-light">       
+                    <div class="col-12 col-md-3 mt-4">
+                        <a class="btn btn-light btn-outline-dark rounded" href="{% url 'add_review' %}">Add Your Own Review</a>
                     </div>
 
-                    <form class="form-inline d-none d-sm-inline-block col-md-3" method="GET" action="{% url 'reviews_list' %}">
-                        <input class="form-control border-black rounded-0" type="text" name="q" id="review" placeholder="Search product review...">
+                    <form class="form-inline d-none d-sm-inline-block col-md-3 mt-4" method="GET" action="{% url 'reviews_list' %}">
+                        <input class="form-control border-black rounded-0" type="text" name="q" id="review" placeholder="Search Reviews...">
                         <div class="input-group-append" id="input-group-append-search">
                             <button class="form-control btn border border-black rounded-0" style="background-color: #FF0000;" type="submit">
                                 <span class="icon" style="color: #fff">
@@ -39,12 +39,25 @@
                             </button>
                         </div>
                     </form>
+
+                    <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                        <div class="sort-select-wrapper w-50">
+                            <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                                <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+                                <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+                                <option value="product_asc" {% if current_sorting == 'product_asc' %}selected{% endif %}>Product (A-Z)</option>
+                                <option value="product_desc" {% if current_sorting == 'product_desc' %}selected{% endif %}>Product (Z-A)</option>
+                                <option value="date_asc" {% if current_sorting == 'date_asc' %}selected{% endif %}>Most Recent</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                     <div class="col-12 col-md-6 order-md-first">
                         <p class="text-white mt-3 text-center text-md-left">
                             {% if search_term != 'None_None' %}
-                                <span class="small"><a href="{% url 'reviews_list' %}">Reviews Home</a> | </span>
+                                <span class="small"><a href="{% url 'reviews_list' %}" style="color: #fff;">No* of Reviews</a> | </span>
                             {% endif %}
                             {{ reviews|length }} Reviews{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                         </p>
@@ -150,5 +163,31 @@
         $('.btt-link').click(function(e) {
 			window.scrollTo(0,0)
         })
-	</script>
+    </script>
+    
+    <script type="text/javascript">
+
+        // code for onchange dropdown functionality
+
+        $('#sort-selector').change(function() {
+            var selector = $(this);
+            var currentUrl = new URL(window.location);
+
+            var selectedVal = selector.val();
+            if(selectedVal != "reset"){
+                var sort = selectedVal.split("_")[0];
+                var direction = selectedVal.split("_")[1];
+
+                currentUrl.searchParams.set("sort", sort);
+                currentUrl.searchParams.set("direction", direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete("sort");
+                currentUrl.searchParams.delete("direction");
+
+                window.location.replace(currentUrl);
+            }
+        })
+    </script>
 {% endblock %}
