@@ -6,6 +6,7 @@ from .forms import ReviewForm
 from profiles.models import UserProfile
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -14,6 +15,7 @@ def all_reviews(request):
     """ A view to show all products, including sorting and search queries """
 
     # set all variables to none at first
+
     reviews = Reviews_list.objects.all()  # fetch reviews
     query = None
     sort = None
@@ -86,3 +88,14 @@ def add_review(request):
     }
 
     return render(request, template, context)
+
+
+def auto_review(request):  # autocomplete function for search box
+    if 'term' in request.GET:
+        qs = Reviews_list.objects.filter(product__name__icontains=request.GET.get('term'))
+        titles = list()
+        for review in qs:
+            titles.append(review.product.name)
+
+        return JsonResponse(titles, safe=False)
+    return render(request, 'reviews_list/reviews_list.html')
