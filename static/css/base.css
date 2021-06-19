@@ -87,16 +87,6 @@ body {
     color: #000;
 }
 
-.btn-black {
-    background: black;
-    color: white;
-}
-
-.btn-outline {
-    border: 1px solid red;
-    color: grey;
-}
-
 .btn-outline:hover,
 .btn-outline:active,
 .btn-outline:focus {
@@ -144,6 +134,7 @@ a.category-badge > span.badge:hover {
 }
 
 /* back to top button */
+
 .btt-button {
     height: 2.625rem;
     width: 2.625em;
@@ -153,6 +144,7 @@ a.category-badge > span.badge:hover {
 }
 
 /* back to top link, update product link & remove link */
+
 .btt-link,
 .update-link,
 .remove-item {
@@ -160,6 +152,7 @@ a.category-badge > span.badge:hover {
 }
 
 /* search box suggestions */
+
 .ui-autocomplete {
     position: absolute;
     top: 0;
@@ -248,6 +241,7 @@ footer {
 
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+
 .arrow-up {
     width: 0; 
     height: 0; 
@@ -260,6 +254,7 @@ footer {
 }
 
 /* Convenience classes - colors copied from Bootstrap */
+
 .arrow-primary {
     border-bottom-color: #007bff !important;
 }
@@ -300,15 +295,6 @@ footer {
 
 .btn-danger{
     background-color: red !important;
-}
-
-/* ---- Media Queries ---- */
-
-/* Slightly larger container on xl screens */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
 }
 
 /* Allauth form formatting */
@@ -394,8 +380,9 @@ footer {
 }
 
 
-/* fixed top navbar only on medium and up */
+
 @media (min-width: 992px) {
+
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
@@ -410,6 +397,7 @@ footer {
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
+
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
@@ -455,3 +443,60 @@ footer {
         padding: .25rem .5rem !important;
     }
 }
+
+
+/* Media Queries */
+
+ /* # Mobile */
+
+@media only screen and (max-width: 768px) {
+ 
+}
+
+  /* # Tablets/Ipads portrait mode */
+
+@media (min-width: 768px) and (max-width: 1024px){ 
+    
+    /* Make Footer fixed */
+
+    #footer-details {
+        padding: 1.875em;
+        margin-top: 4rem;
+        position: fixed; 
+        bottom: 0;
+   }
+   .container {
+        margin-top: 1rem;
+   }
+}
+
+ /* # Laptops and Desktops */
+
+@media (min-width: 1025px){
+
+    /* #footer-details {
+        padding: 1.875em;
+        margin-top: 3.125em;
+        position: fixed; 
+        bottom: 0;
+   } */
+   .container {
+        margin-top: 2rem;
+   }
+} 
+          
+/* Media Query for Large screens */
+
+@media only screen  and (min-width : 1200px) {
+    
+    /* #footer-details {
+        padding: 1.875em;
+        margin-top: 3rem; 
+        position: fixed; 
+        bottom: 0;
+   } */
+    .container {
+        max-width: 80%;
+        margin-top: 1rem;
+   }
+} 

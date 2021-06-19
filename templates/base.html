@@ -50,7 +50,7 @@
                 <i style="color: grey" class="fas fa-dumbbell fa-2x" aria-hidden="true"></i>
             </a>
             
-            <ul class="navbar-nav d-none d-sm-block mt-2 mt-lg-0 mr-auto">
+            <ul class="navbar-nav d-none d-sm-none d-md-none d-lg-block mt-2 mt-lg-0 mr-auto">
                 <li class="list-inline-item dropdown">
                     <a class="text-white btn-outline bg-black font-weight-bold hvr-float-shadow nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
@@ -87,7 +87,7 @@
                </li>
             </ul>
 
-            <form class="form-inline mt-3 d-none d-sm-inline-block mr-5" method="GET" action="{% url 'products' %}">
+            <form class="form-inline mt-3 d-none d-sm-none d-md-none d-lg-inline-block mr-5" method="GET" action="{% url 'products' %}">
                 <input class="form-control border-black rounded-0" type="text" name="q" id="product" placeholder="Search products...">
                 <div class="input-group-append" id="input-group-append-search">
                     <button class="form-control btn border border-black rounded-0" style="background-color: #FF0000;" type="submit">
@@ -155,12 +155,12 @@
 
      <!-- footer -->
             
-    <footer class="container-fluid">
+    <footer class="container-fluid" id="footer-details">
             <div class="row">
 
                     <!-- contact us -->
 
-                    <div class="col-12 col-sm-5 py-1">
+                    <div class="col-12 col-sm-5 py-1 mx-auto mx-lg-0">
                         <h5 class="uppercase general-sub">Contact Us</h5>
                         <p class="inline-block pt-4">
                             <b>Website:</b> b-fitness-django-app.herokuapp.com/
