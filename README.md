@@ -4,7 +4,7 @@
 
 - Link to Project - [View](https://b-fitness-django-app.herokuapp.com/)
 
-![All_Devices](/static/img/responsive_image.png)
+![All_Devices](/media/responsive_image.png)
 
 # Brief Introduction to the Project
 
