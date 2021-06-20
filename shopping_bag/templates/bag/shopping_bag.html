@@ -18,6 +18,9 @@
             <div class="col">
                 <hr>
                 <h2 class="mb-4">Shopping Bag</h2>
+                <p class="mt-1 mb-0">
+                    <a href="{% url 'reviews_list' %}">Click here for Product Reviews!</a>
+                </p>
                 <hr>
             </div>
         </div>
@@ -106,7 +109,7 @@
                     </div>
                 {% else %}
                     <p class="mb-4">Your bag is empty.</p>
-                    <a href="{% url 'products' %}" class="btn btn-light btn-outline-dark rounded btn-lg" style="margin-bottom: 1.5rem;">
+                    <a href="{% url 'products' %}" class="btn btn-dark rounded btn-lg" style="margin-bottom: 1.5rem;">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>

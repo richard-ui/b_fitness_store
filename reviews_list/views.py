@@ -29,6 +29,8 @@ def all_reviews(request):
             if sortkey == 'product':
                 sortkey = 'lower_name'
                 reviews = reviews.annotate(lower_name=Lower('product')) # convert to lowercase
+            if sortkey == 'product': # take current category of product
+                sortkey = 'product__name'
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':

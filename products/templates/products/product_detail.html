@@ -28,6 +28,9 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
+                    <p class="mt-1 mb-0">
+                        <a href="{% url 'reviews_list' %}">Click here for Product Reviews!</a>
+                    </p>
                     <p class="mb-0">{{ product.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
                     {% if product.category %}
@@ -114,13 +117,13 @@
                             </div>
 
                             <div class="col{% if s %}-12 mt-2{% endif %}">
-                                <a href="{% url 'products' %}" class="btn btn-light btn-outline-dark rounded mt-5">
+                                <a href="{% url 'products' %}" class="btn btn-dark rounded mt-5">
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>
-                                <input type="submit" class="btn btn-dark btn-outline-light rounded text-uppercase mt-5" value="Add to Bag">
+                                <input type="submit" class="btn btn-dark rounded text-uppercase mt-5" value="Add to Bag">
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             
