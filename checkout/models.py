@@ -11,6 +11,9 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+
+    # order table fields which also links to userprofile
+
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(
         UserProfile, on_delete=models.SET_NULL,
@@ -28,7 +31,7 @@ class Order(models.Model):
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True) # adds date & time automatically
     delivery_cost = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0
         )
@@ -38,7 +41,7 @@ class Order(models.Model):
     grand_total = models.DecimalField(
         max_digits=10, decimal_places=2, null=False, default=0
         )
-    original_bag = models.TextField(
+    original_bag = models.TextField( # textarea
         null=False, blank=False, default=''
         )
     stripe_pid = models.CharField(
@@ -73,11 +76,11 @@ class Order(models.Model):
         if it hasn't been set already.
         """
         if not self.order_number:
-            self.order_number = self._generate_order_number()
+            self.order_number = self._generate_order_number() # use method to generate order number
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.order_number
+        return self.order_number # return generated order number
 
 
 class OrderLineItem(models.Model):
@@ -86,7 +89,7 @@ class OrderLineItem(models.Model):
         blank=False, on_delete=models.CASCADE,
         related_name='lineitems'
         )
-    product = models.ForeignKey(
+    product = models.ForeignKey( # product foreign key
         Product, null=False, blank=False, on_delete=models.CASCADE
         )
     product_size = models.CharField(

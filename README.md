@@ -52,6 +52,10 @@ and purchase.
 
 - As a Shopper, I want to be able to view my shopping bag and be able to update accordingly.
 
+- As a Shopper, I want to be able to view reviews of products.
+
+- As a Shopper, I want to be able to search reviews by specific product, date and rating.
+ 
 ### Admin goals: 
 
 - As an Admin, I want to be able to add a new product.
@@ -184,6 +188,18 @@ and purchase.
   i. The user can click on the 'Shopping cart' Icon with the price of the shop underneath it on the navigation bar.
 
   ii. If their is items in their cart, the user can update the items quantity or decide to remove it.
+
+- As a Shopper, I want to be able to view reviews of products.
+
+  i. User has numerous links through the site that alert the user that they can click here to access reviews page.
+
+  ii. All reviews will show on the page
+
+- As a Shopper, I want to be able to search reviews by specific product, date and rating.
+
+  i. Its clear when entering the reviews page that there is 2 options for the user to search reviews.
+  
+  ii. A textbox appears where the user can type in a product which will bring up results. Alternatively they can use the dropdown menu to sort reviews by date/rating.
 
 ### Admin User's:
 

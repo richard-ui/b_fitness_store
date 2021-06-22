@@ -16,7 +16,22 @@ class ReviewForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        placeholders = {
+            'product': 'Product...',
+            'review': 'add review...',
+            'rating': '1-5...',
+        }
+        self.fields['product'].widget.attrs['autofocus'] = True
+
         self.fields['review'].widget = Textarea(attrs={'cols': 50, 'rows': 5})
 
-        for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'border-black rounded-0'
+        #self.fields['rating'].choices = friendly_names
+
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]}'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'border-black rounded-0'
+        
