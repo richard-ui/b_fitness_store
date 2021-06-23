@@ -111,6 +111,9 @@ and purchase.
 | Add Product to bag   | Users can add as many products as they like to the bag which they can then view in the shop bag page to review.  |
 | Remove Product from bag | A User can delete existing product from bag.  |
 | Update bag | A User can update their bag by updating the products quantity.  |
+| Search Reviews | A user can search for review using textbox, Alternatively search from selection box which orders by fields in db | 
+| Add Review | A User can add review for a product they like or dislike. A form requires them to add a rating and a descriptive review. |
+
 
 
 # Features left to implement
@@ -122,6 +125,12 @@ and purchase.
 - Once I found a way to implement jQuery's Autocomplete functionality, there was an issue with the list of product suggestions displayed from the search box.
   It would display behind the 'main-nav' and the 'delivery banner' elements. I fixed this by customizing the z-index of the 'ui-autocomplete' class in the base.css file so it would display infront of
   everything that it should.
+
+- When making the rating for the reviews page, the textbox form would allow the user to type in any number and did not have a max rating of 5 like I wanted. To fix this, I researched that django can use min and max validators
+  for numbers which I used to implement a dropdown list of from 0 to 5.
+
+- When using responsive websites for testing our application would crash and run a server error. With the help from the Slack community, I downloaded the Chrome extension for x-frame options. Therefore I could use the Responsinator tool
+  and 'Am I Responsive'.
 
 # Testing
 
@@ -230,9 +239,9 @@ and purchase.
 
 - The Responsinator tool was a feature used to view the deployed site and look to see how each device would display it. Device screens such as Android, iPhone and iPads were used to view on. In doing so they were viewed in a landscape and portrait perspective.
 
-  ![All_Devices](/static/img/mobile_responsinator.png)
+  ![mobile_Responsive](/media/mobile_responsinator.png)
 
-  ![All_Devices](/static/img/ipad_responsinator.png)
+  ![iPad_Responsive](/media/ipad_responsinator.png)
 
 # Deployment
 
@@ -317,9 +326,10 @@ DISABLE_COLLECTSTATIC	1
 - Credited the autocomplete search functionality from '[codebands](https://www.youtube.com/watch?v=-oLVZp1NQVE)' channel on Youtube.
 - Used Code from this website to provide the page with pagination options. [Django Pagination](https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html)
 
+
 # Acknowledgements
-- My Mentor provided me with help and provided me access to Holly’s repository to view. This allowed me to locate the issues in my code and improve functionality that I may have been struggling with.
-- Slack was used to help me with the image upload, so it can be used on the server.
+- My Mentor provided me with help and provided me with help if ever I needed help with my project.
+- Slack was used to help me fix a number of issues with the project, providing me with much need information about working with the stripe system on the server and the use of models in django.
 
  My friends and family who helped to test the site and to test payments of products.
 

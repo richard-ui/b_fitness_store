@@ -25,8 +25,6 @@ class ReviewForm(forms.ModelForm):
 
         self.fields['review'].widget = Textarea(attrs={'cols': 50, 'rows': 5})
 
-        #self.fields['rating'].choices = friendly_names
-
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]}'

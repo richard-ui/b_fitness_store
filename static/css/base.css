@@ -360,6 +360,13 @@ footer {
 
 @media only screen and (max-width: 768px) {
      /* # N / A */
+     h2{
+         margin-top: 2rem;
+     }
+     #footer-details {
+        margin-top: 2.5rem;
+   }
+
 }
 
  /* # Mobile landscape */
@@ -399,12 +406,6 @@ footer {
 
 @media (min-width: 1025px){
 
-    /* #footer-details {
-        padding: 1.875em;
-        margin-top: 3.125em;
-        position: fixed; 
-        bottom: 0;
-   } */
    .container {
         margin-top: 2rem;
    }

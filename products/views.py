@@ -24,10 +24,6 @@ def all_products(request):
     direction = None # set all variables to none at first
     paginator = None
 
-    page = request.GET.get('page', 1)
-
-    paginator = Paginator(products, 20) # paginator function to paginate by 20 products
-
     # listens for get request, either sorting or by category
     if request.GET:
         if 'sort' in request.GET:
@@ -67,6 +63,9 @@ def all_products(request):
 
     current_sorting = f'{sort}_{direction}'
 
+    paginator = Paginator(products, 20) # paginator function to paginate by 20 products
+    page = request.GET.get('page', 1)
+    
     # pagination
     try:
         products = paginator.page(page)
@@ -74,6 +73,7 @@ def all_products(request):
         products = paginator.page(1)
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
+    
 
     context = {
         'products': products,
