@@ -11,6 +11,7 @@ from products.models import Product
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 from shopping_bag.contexts import bag_contents
+from django.contrib.auth.models import AnonymousUser
 
 import stripe
 import json
@@ -47,7 +48,7 @@ def checkout(request):
 
         # create form_data dictionary
 
-        form_data = {
+        form_data = {                           # takes user form input
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
@@ -70,7 +71,7 @@ def checkout(request):
             order.save()
             for item_id, item_data in bag.items():
                 try:
-                    product = Product.objects.get(id=item_id)
+                    product = Product.objects.get(id=item_id) # get product
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             # orderlineitem model fields
@@ -89,12 +90,17 @@ def checkout(request):
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
-                    # basic expect message if product does not exist
+                    # if product does not exist
                     messages.error(request, 'One of the products \
                 in your bag cannot be found in the database!')
                     return redirect(reverse('view_bag'))
 
+            # create session for save_info checkbox
             request.session['save_info'] = 'save-info' in request.POST
+            
+            # create session for user's name
+            request.session['save_user'] = request.POST['full_name']
+
             return redirect(
                 reverse('checkout_success', args=[order.order_number]) # order id
                 )
@@ -119,8 +125,11 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
+        # if user is logged in
+
         if request.user.is_authenticated:
             try:
+                # set user session details into the textboxes by default
                 profile = UserProfile.objects.get(user=request.user)
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
@@ -157,6 +166,7 @@ def checkout_success(request, order_number):
     Handle successful checkouts
     """
     save_info = request.session.get('save_info')
+    save_user = request.session.get('save_user')
     order = get_object_or_404(Order, order_number=order_number)
 
     # get user logged in
