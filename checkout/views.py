@@ -97,8 +97,8 @@ def checkout(request):
 
             # create session for save_info checkbox
             request.session['save_info'] = 'save-info' in request.POST
-            
-            # create session for user's name
+
+            # create session for user's name after form submission
             request.session['save_user'] = request.POST['full_name']
 
             return redirect(
@@ -125,7 +125,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        # if user is logged in
+        # if user is logged in on checkout.html page
 
         if request.user.is_authenticated:
             try:
@@ -169,16 +169,23 @@ def checkout_success(request, order_number):
     save_user = request.session.get('save_user')
     order = get_object_or_404(Order, order_number=order_number)
 
-    # get user logged in
-    profile = UserProfile.objects.get(user=request.user)
+    # if user user logged in
+    if request.user.is_authenticated:
+        # get user session
+        profile = UserProfile.objects.get(user=request.user)
+        # save user profile along with the order
+        order.user_profile = profile
+        order.save()
+    else:
+        user_name = save_user
 
     # Attach the user's profile to the order
-    order.user_profile = profile
-    order.save()
+    # order.user_profile = profile
+    # order.save()
 
-    # Save the user's info
+    # if save info checkbox is checkout from checkout.html
     if save_info:
-        profile_data = {
+        profile_data = {   # continue
             'default_phone_number': order.phone_number,
             'default_country': order.country,
             'default_postcode': order.postcode,

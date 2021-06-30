@@ -247,20 +247,20 @@ and purchase.
 
 ## Github Pages
 
-1. Log in to GitHub
+1. Log in to **GitHub**
 2. Locate the repositories and chose one that you want to Deploy
-3. Press the "Settings"
-4. Scroll down to the GitHub pages section
-5. Under "Source" enter the drop down list with the first value of "None" and select "Master branch" instead
+3. Press the **"Settings"**
+4. Scroll down to the **GitHub pages** section
+5. Under **"Source"** enter the drop down list with the first value of **"None"** and select **"Master branch"** instead
 6. The page will refresh to be took to the top of the page
-7. Scroll down until you get to the "Github pages" section to identify your now deployed link to your website
+7. Scroll down until you get to the **"Github pages"** section to identify your now deployed link to your website
 
 ## Forking the Github repository
 
 Forking the repsoitory means we are making a copy of the original version to edit and modify any changes without affecting the original.
 
-1. Log in to GitHub and locate the Github Repository
-2. At the top of the Repository (not top of the page) just above the "Settings" button on the menu, locate the "Fork" button
+1. Log in to **GitHub** and locate the **Github Repository**
+2. At the top of the Repository (not top of the page) just above the **"Settings"** button on the menu, locate the **"Fork"** button
 3. You should now have a copy of the original Repository in your GitHub Account
 
 ## Making a Local Clone
@@ -303,9 +303,6 @@ Forking the repsoitory means we are making a copy of the original version to edi
 | STRIPE_SECRET_KEY  | <YOUR_STRIPE_SECRET_KEY>  |
 | STRIPE_WH_SECRET | <STRIPE_WEBHOOK_SECRET_KEY> |
 | USE_AWS  | True |
-
-
-DISABLE_COLLECTSTATIC	1
 
 14. In settings.py add the **secret key** from heroku:
     - SECRET_KEY = os.environ.get('SECRET_KEY, '')
