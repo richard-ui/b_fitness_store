@@ -114,12 +114,6 @@ and purchase.
 | Search Reviews | A user can search for review using textbox, Alternatively search from selection box which orders by fields in db | 
 | Add Review | A User can add review for a product they like or dislike. A form requires them to add a rating and a descriptive review. |
 
-
-
-# Features left to implement
-
-- N/A
-
 # Bugs
 
 - Once I found a way to implement jQuery's Autocomplete functionality, there was an issue with the list of product suggestions displayed from the search box.

@@ -400,6 +400,18 @@ footer {
    #home-text{
         display: block !important;
    }
+   h2{
+       margin-bottom: 30px;
+   }
+   .container-top {
+       margin-top: 10rem;
+   }
+   .container-top-bag, .container-top-reviews, .container-top-checkout{
+       margin-top: 13rem;
+   }
+   .pagination{
+       margin-top: 3rem;
+   }
 }
 
  /* # Laptops and Desktops */
