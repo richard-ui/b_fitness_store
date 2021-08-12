@@ -21,7 +21,7 @@ def all_products(request):
     query = None
     categories = None
     sort = None
-    direction = None # set all variables to none at first
+    direction = None  # set all variables to none at first
     paginator = None
 
     # listens for get request, either sorting or by category
@@ -29,25 +29,26 @@ def all_products(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
-            if sortkey == 'name': # take current name of product
+            if sortkey == 'name':  # take current name of product
                 sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name')) # convert to lowercase
-            if sortkey == 'category': # take current category of product
+                # convert to lowercase
+                products = products.annotate(lower_name=Lower('name'))
+            if sortkey == 'category':  # take current category of product
                 sortkey = 'category__name'
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
-                    sortkey = f'-{sortkey}'  # order products in descending order
-            products = products.order_by(sortkey) # order by products from value of sortkey
+                    # order products in descending order
+                    sortkey = f'-{sortkey}'
+                    # order by products from value of sortkey
+            products = products.order_by(sortkey)
 
-        if 'category' in request.GET: # gets category request
+        if 'category' in request.GET:  # gets category request
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
-
-        # search request function
         if 'q' in request.GET: 
-            query = request.GET['q'] # listens for input
+            query = request.GET['q']  # listens for input
             if not query:  # if query is empty provide error
                 messages.error(
                     request,
@@ -55,17 +56,18 @@ def all_products(request):
                     )
                 return redirect(reverse('products'))
 
-            # listen for search queries that are the same as Product 'name' or 'description'
+            # listen for search queries that
+            # are the same as Product 'name' or 'description'
             queries = (
                 Q(name__icontains=query) | Q(description__icontains=query) 
             )
-            products = products.filter(queries) # filter out products
+            products = products.filter(queries)  # filter out products
 
     current_sorting = f'{sort}_{direction}'
 
-    paginator = Paginator(products, 20) # paginator function to paginate by 20 products
+    # paginator function to paginate by 20 products
+    paginator = Paginator(products, 20)
     page = request.GET.get('page', 1)
-    
     # pagination
     try:
         products = paginator.page(page)
@@ -73,11 +75,9 @@ def all_products(request):
         products = paginator.page(1)
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
-    
-
     context = {
         'products': products,
-        'search_term': query, # search box
+        'search_term': query,  # search box
         'current_categories': categories,
         'current_sorting': current_sorting,
     }
@@ -99,16 +99,15 @@ def product_detail(request, product_id):
 
 @login_required
 def add_product(request):
-    
     """ Add a product to the store """
-    if not request.user.is_superuser: # if NOT superuser
+    if not request.user.is_superuser:  # if NOT superuser
         messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home')) # redirect back to home page
+        return redirect(reverse('home'))  # redirect back to home page
 
-    if request.method == 'POST': # validate form
+    if request.method == 'POST':  # validate form
         form = ProductForm(request.POST, request.FILES) 
         if form.is_valid():
-            product = form.save() # form save
+            product = form.save()  # form save
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
@@ -131,14 +130,14 @@ def add_product(request):
 @login_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
-    if not request.user.is_superuser: # check to see if NOT superuser
+    if not request.user.is_superuser:  # check to see if NOT superuser
         messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home')) # redirect to home page
+        return redirect(reverse('home'))  # redirect to home page
 
-    product = get_object_or_404(Product, pk=product_id) # get product id
-    if request.method == 'POST': # get ProductForm request
+    product = get_object_or_404(Product, pk=product_id)  # get product id
+    if request.method == 'POST':  # get ProductForm request
         form = ProductForm(request.POST, request.FILES, instance=product)
-        if form.is_valid(): # check for form validation
+        if form.is_valid():  # check for form validation
             form.save()
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
@@ -156,7 +155,6 @@ def edit_product(request, product_id):
         'form': form,
         'product': product,
     }
-
     return render(request, template, context)
 
 
@@ -167,13 +165,15 @@ def delete_product(request, product_id):
     data = dict()
     if request.method == 'POST':
         product.delete()
-        data['form_is_valid'] = True  # This is just to play along with the existing code
+        # This is just to play along with the existing code
+        data['form_is_valid'] = True
         products = Product.objects.all()
         messages.success(request, 'Product deleted!')
         return redirect(reverse('products'))
     else:
         context = {'product': product}
-        data['html_form'] = render_to_string('products/includes/partial_book_delete.html',
+        data['html_form'] = render_to_string(
+            'products/includes/partial_product_delete.html',
             context,
             request=request,
         )

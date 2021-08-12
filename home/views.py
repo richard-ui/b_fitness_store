@@ -14,7 +14,9 @@ def index(request):
 
 def autocomplete(request):
     if 'term' in request.GET:
-        qs = Product_item.objects.filter(title__icontains=request.GET.get('term'))
+        qs = Product_item.objects.filter(
+            title__icontains=request.GET.get('term')
+            )
         titles = list()
         for product in qs:
             titles.append(product.title)

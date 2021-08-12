@@ -3,6 +3,7 @@ from .models import Reviews_list
 
 # Register your models here.
 
+
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
         'product',

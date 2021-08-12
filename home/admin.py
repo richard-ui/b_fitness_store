@@ -12,4 +12,3 @@ class Product_itemAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product_item, Product_itemAdmin)
-

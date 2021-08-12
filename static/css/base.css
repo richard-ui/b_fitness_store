@@ -12,6 +12,21 @@ body {
 .bold-text {
     font-weight: bold;
 }
+
+/* Mobile Toggler */
+
+.custom-toggler.navbar-toggler { 
+    border-color: red; 
+}
+
+.custom-toggler .navbar-toggler-icon { 
+    background-image: url( 
+        "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.8)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
+}
+.custom-toggler{
+    background-color: #000;
+}
+
 /* Float Shadow effect for navigation links */
 
 .hvr-float-shadow {
@@ -67,6 +82,7 @@ body {
 }
 
 /* font awesome icons */
+
 .icon {
     align-items: center;
     display: inline-flex;
@@ -75,7 +91,8 @@ body {
     width: 1.5rem;
 }
 
- /* shop now button on home page*/
+ /* shop now button on home page */
+
 .shop-now-button {
     background: #FF0000;
     color: white;
@@ -163,7 +180,7 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
-/* search box suggestions */
+/* credits: code used to style autocomplete in front of the navigation header */
 .ui-autocomplete {
     position: absolute;
     top: 0;
@@ -171,12 +188,6 @@ a.category-badge > span.badge:hover {
     cursor: default;
     z-index: 9050!important;
 }
-
-/*
-input[name='q']::placeholder {
-    color: 	#FF6347;
-}
-*/
 
 /*  --- Footer --- */
 

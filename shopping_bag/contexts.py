@@ -6,10 +6,10 @@ from products.models import Product
 
 def bag_contents(request):
 
-    bag_items = [] # create array object
+    bag_items = []  # create array object
     total = 0
     product_count = 0
-    bag = request.session.get('bag', {}) # created bag session
+    bag = request.session.get('bag', {})  # created bag session
 
     # for loop to loop through shop bag items
     for item_id, item_product in bag.items():
@@ -18,7 +18,7 @@ def bag_contents(request):
             # get current product id
             product = get_object_or_404(Product, pk=item_id)
             total += item_product * product.price
-            product_count += item_product # product count
+            product_count += item_product  # product count
             bag_items.append({
                 'item_id': item_id,   # append id, quantity and product 
                 'quantity': item_product,
@@ -40,14 +40,15 @@ def bag_contents(request):
     if total < settings.FREE_DELIVERY_THRESHOLD:
         # delivery = bag total x 10%
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
-        # free delivery delta = how much user would need to spend for free delivery
+        # free delivery delta =
+        # how much user would need to spend for free delivery
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
         # else reset delivery charge to 0.
         delivery = 0
         free_delivery_delta = 0
-
-    grand_total = delivery + total # grand total taking into consideration the delivery cost.
+    # grand total taking into consideration the delivery cost.
+    grand_total = delivery + total
 
     context = {
         'bag_items': bag_items,
@@ -59,4 +60,4 @@ def bag_contents(request):
         'grand_total': grand_total,
     }
 
-    return context # context available in any template file thoughout app
+    return context  # context available in any template file thoughout app

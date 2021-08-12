@@ -118,10 +118,24 @@ and purchase.
 
 - Once I found a way to implement jQuery's Autocomplete functionality, there was an issue with the list of product suggestions displayed from the search box.
   It would display behind the 'main-nav' and the 'delivery banner' elements. I fixed this by customizing the z-index of the 'ui-autocomplete' class in the base.css file so it would display infront of
-  everything that it should.
+  everything that it should:
+  
+  `.ui-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: default;
+    z-index: 9050!important;
+  }`
 
 - When making the rating for the reviews page, the textbox form would allow the user to type in any number and did not have a max rating of 5 like I wanted. To fix this, I researched that django can use min and max validators
-  for numbers which I used to implement a dropdown list of from 0 to 5.
+  for numbers which I used to implement a dropdown list of from 0 to 5:
+  
+  `rating = models.IntegerField(
+        choices=RATING_CHOICES, default=1,
+        validators=[MinValueValidator(0), MaxValueValidator(5)]
+        )
+  `
 
 - When using responsive websites for testing our application would crash and run a server error. With the help from the Slack community, I downloaded the Chrome extension for x-frame options. Therefore I could use the Responsinator tool
   and 'Am I Responsive'.

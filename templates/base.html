@@ -46,7 +46,7 @@
     <header class="container-fluid fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
             <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                <span style="font-size: 1.8rem; text-decoration: underline wavy red;" class="text-black my-0 mr-3"><strong>B</strong>-Fit Store</span>
+                <span style="font-size: 1.8rem;" class="text-black my-0 mr-3"><strong>B</strong>-Fit Store</span>
                 <i style="color: grey" class="fas fa-dumbbell fa-2x" aria-hidden="true"></i>
             </a>
             
@@ -113,15 +113,20 @@
                 
             </script>
 
+        <!-- Targets the main-nav.html -->
+        
         <div class="row bg-light">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+
+                <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 {% include 'includes/mobile-top-header.html' %}
                 {% include 'includes/main-nav.html' %}
             </nav>
         </div>
+
         <div id="delivery-banner" class="row text-center">
             <div class="col bg-black text-white">
                 <h4 class="my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>                

@@ -21,11 +21,12 @@ import json
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY # special key used from stripe.
+        # special key used from stripe.
+        stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
             'save_info': request.POST.get('save_info'),
-            'username': request.user, # current user who is logged in
+            'username': request.user,  # current user who is logged in
         })
         return HttpResponse(status=200)
     except Exception as e:
@@ -40,11 +41,9 @@ def checkout(request):
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-
-    # form request
-    
     if request.method == 'POST':
-        bag = request.session.get('bag', {}) # get bag or create new bag if not exists
+        # get bag or create new bag if not exists
+        bag = request.session.get('bag', {})
 
         # create form_data dictionary
 
@@ -59,19 +58,19 @@ def checkout(request):
             'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
         }
-        order_form = OrderForm(form_data) # place form values in order form
+        order_form = OrderForm(form_data)  # place form values in order form
 
         # form validation
 
         if order_form.is_valid():
-            order = order_form.save(commit=False) # form save
+            order = order_form.save(commit=False)  # form save
             pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid # place stripe id in order
+            order.stripe_pid = pid  # place stripe id in order
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():
                 try:
-                    product = Product.objects.get(id=item_id) # get product
+                    product = Product.objects.get(id=item_id)  # get product
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             # orderlineitem model fields
@@ -102,13 +101,14 @@ def checkout(request):
             request.session['save_user'] = request.POST['full_name']
 
             return redirect(
-                reverse('checkout_success', args=[order.order_number]) # order id
+                # order id
+                reverse('checkout_success', args=[order.order_number])
                 )
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
-        bag = request.session.get('bag', {}) # if not in bag session
+        bag = request.session.get('bag', {})  # if not in bag session
         if not bag:
             messages.error(
                 request,
