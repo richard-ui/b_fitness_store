@@ -244,6 +244,10 @@ footer {
   transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }
 
+.mobile-link{
+    margin-left: 140px;
+}
+
 /* ---- bootstrap toasts --- */
 
 .message-container {
