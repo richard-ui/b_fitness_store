@@ -136,37 +136,74 @@
 
         <!-- Reviews List -->
         
-        <h2>Reviews</h2>
+        <h2 class="p-2">Reviews</h2>
         <div class="row">
             {% for review in reviews %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="card h-100" style="border-style: groove; border-width: thick;">
-                        <div class="card-body pb-0">
-                            <p class="mb-0">{{ review.product }}</p>
-                        </div>
                         <div class="card-footer bg-white pt-0 border-0 text-left" id="book-table">
                             <div class="row">
                                 <div class="col">
-                                    <p class="lead mb-0 text-left font-weight-bold">£{{ review.product }}</p>
-                                    {% if review.rating %}
-                                    <p class="small mt-1 mb-0">
-                                        <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
-                                            <i class="fas fa-tag mr-1"></i>{{ review.date }}
-                                        </a>
-                                    </p>
+                                    {% if review.product %}
+                                        <h5 class="my-2">{{ review.product.name }}</h5>
                                     {% endif %}
-
-                                   {% if request.user.is_superuser %}
-                                        <p class="ml-1">
-                                            <a href="{% url 'edit_product' product.id %}" class="btn btn-info btn-sm">
-                                                <i class="fas fa-edit"></i> Edit
-                                            </a> / 
-                                            <button type="button" class="btn btn-danger btn-sm js-delete-product" id="btn-delete1" data-url="{% url 'delete_product' product.id %}">
-                                                <i class="far fa-trash-alt"></i> Delete
-                                            </button>
-                                        </p>
+                                    {% if review.review %}
+                                        <p class="my-2">{{ review.review }}</p>
+                                    {% endif %}
+                                    {% if review.rating == 1 %}
+                                        <small class="text-muted"><i class="fas fa-star mr-1" style="color: #FFD700"></i>{{ review.rating }} / 5</small>
+                                    {% elif review.rating == 2 %}
+                                        <small class="text-muted">
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            {{ review.rating }} / 5
+                                        </small>
+                                    {% elif review.rating == 3 %}
+                                        <small class="text-muted">
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            {{ review.rating }} / 5
+                                        </small>
+                                    {% elif review.rating == 4 %}
+                                        <small class="text-muted">
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            {{ review.rating }} / 5
+                                        </small>
+                                    {% elif review.rating == 5 %}
+                                        <small class="text-muted">
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            <i class="fas fa-star mr-1" style="color: #FFD700"></i>
+                                            {{ review.rating }} / 5
+                                        </small>
+                                    {% else %}
+                                        <small class="text-muted">No Rating</small>
                                     {% endif %}
                                     
+                                    {% if review.user %}
+                                       <p><small class="mx-auto"><strong>Reviewed By:</strong> {{ review.user }}</small></p>
+                                    {% else %}
+                                        <p>No User</p>
+                                    {% endif %}
+                                       <p><small class="mx-auto"><strong>Date Created:</strong> {{ review.date }}</small></p>
+                                    
+                                    
+                                    {% if request.user == review.user.user %}
+                                        <p class="ml-1">
+                                            <a href="{% url 'edit_product' product.id %}" class="btn btn-info btn-sm">
+                                               <i class="fas fa-edit"></i> Edit
+                                           </a> / 
+                                           <button type="button" class="btn btn-danger btn-sm js-delete-product" id="btn-delete1" data-url="{% url 'delete_product' product.id %}">
+                                               <i class="far fa-trash-alt"></i> Delete
+                                           </button>
+                                       </p>
+                                   {% endif %}
                                 </div>
                             </div>
                         </div>
