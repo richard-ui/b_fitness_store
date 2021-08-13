@@ -196,7 +196,7 @@
                                     
                                     {% if request.user == review.user.user %}
                                         <p class="ml-1">
-                                            <a href="{% url 'edit_product' product.id %}" class="btn btn-info btn-sm">
+                                            <a href="{% url 'edit_review' review.id %}" class="btn btn-info btn-sm">
                                                <i class="fas fa-edit"></i> Edit
                                            </a> / 
                                            <button type="button" class="btn btn-danger btn-sm js-delete-review" id="btn-delete1" data-url="{% url 'delete_review' review.id %}">

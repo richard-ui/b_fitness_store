@@ -98,6 +98,36 @@ def add_review(request):
     return render(request, template, context)
 
 
+#  edit function to update products for admin users only
+@login_required
+def edit_review(request, review_id):
+    """ Edit a product in the store """
+
+    review = get_object_or_404(Reviews_list, pk=review_id)  # get review id
+
+    if request.method == 'POST':  # get ProductForm request
+        form = ReviewForm(request.POST, request.FILES, instance=review)
+        if form.is_valid():  # check for form validation
+            form.save()
+            messages.success(request, 'Successfully updated Review!')
+            return redirect(reverse('product_detail', args=[review.id]))
+        else:
+            messages.error(
+                request,
+                'Failed to update Review. Please ensure the form is valid.'
+                )
+    else:
+        form = ReviewForm(instance=review)
+        messages.info(request, f'You are editing review for {review.product}')
+
+    template = 'reviews_list/edit_review.html'
+    context = {
+        'form': form,
+        'review': review,
+    }
+    return render(request, template, context)
+
+
 #  delete function to delete products for admin users only
 @login_required
 def delete_review(request, review_id):
