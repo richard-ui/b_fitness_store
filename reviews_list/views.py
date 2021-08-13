@@ -7,6 +7,7 @@ from profiles.models import UserProfile
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -95,6 +96,28 @@ def add_review(request):
     }
 
     return render(request, template, context)
+
+
+#  delete function to delete products for admin users only
+@login_required
+def delete_review(request, review_id):
+    review = get_object_or_404(Reviews_list, pk=review_id)
+    data = dict()
+    if request.method == 'POST':
+        review.delete()
+        # This is just to play along with the existing code
+        data['form_is_valid'] = True
+        reviews = Reviews_list.objects.all()
+        messages.success(request, 'Review deleted!')
+        return redirect(reverse('products'))
+    else:
+        context = {'review': review}
+        data['html_form'] = render_to_string(
+            'reviews_list/includes/partial_review_delete.html',
+            context,
+            request=request,
+        )
+    return JsonResponse(data)
 
 
 def auto_review(request):  # autocomplete function for search box

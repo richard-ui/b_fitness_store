@@ -199,7 +199,7 @@
                                             <a href="{% url 'edit_product' product.id %}" class="btn btn-info btn-sm">
                                                <i class="fas fa-edit"></i> Edit
                                            </a> / 
-                                           <button type="button" class="btn btn-danger btn-sm js-delete-product" id="btn-delete1" data-url="{% url 'delete_product' product.id %}">
+                                           <button type="button" class="btn btn-danger btn-sm js-delete-review" id="btn-delete1" data-url="{% url 'delete_review' review.id %}">
                                                <i class="far fa-trash-alt"></i> Delete
                                            </button>
                                        </p>
@@ -232,9 +232,16 @@
             {% endfor %}
         </div>
 
-        <!-- THE MODAL TRIGGER WE WILL BE USING -->
+        <!-- THE MODAL TRIGGERS WE WILL BE USING -->
 
         <div class="modal fade" id="modal-product">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal-review">
             <div class="modal-dialog">
             <div class="modal-content">
             </div>
@@ -268,4 +275,27 @@
 
         });
     </script>
+
+<script type="text/javascript">
+    $(function () {
+
+    $(".js-delete-review").click(function () {
+        var btn = $(this);
+        $.ajax({
+        url: btn.attr("data-url"),
+        type: 'get',
+        dataType: 'json',
+        beforeSend: function () {
+            $("#modal-review").modal("show");
+        },
+        success: function (data) {
+            $("#modal-review .modal-content").html(data.html_form);
+        }
+        });
+    });
+
+    $("#modal-review").on("submit", ".js-review-delete-form");
+
+    });
+</script>
 {% endblock %}
