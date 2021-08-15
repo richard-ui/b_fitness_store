@@ -381,7 +381,19 @@ footer {
      #footer-details {
         margin-top: 2.5rem;
    }
-
+   #mobile-link1{
+        position: absolute;
+        top: 0;
+        right:10.6rem;
+    }
+    #mobile-link2{
+        position: absolute;
+        right:3.7rem;
+    }
+    #mobile-link3{
+        position: absolute;
+        right:0;
+    }
 }
 
  /* # Mobile landscape */
@@ -394,6 +406,19 @@ footer {
    #home-text{
         display: none !important;
    }
+   #mobile-link1{
+    position: absolute;
+    top: 0;
+    right:10.6rem;
+}
+#mobile-link2{
+    position: absolute;
+    right:3.7rem;
+}
+#mobile-link3{
+    position: absolute;
+    right:0;
+}
 }
 
   /* # Tablets/Ipads portrait mode */
@@ -406,6 +431,19 @@ footer {
    .container {
         margin-top: 1rem;
    }
+   #mobile-link1{
+    position: absolute;
+    top: 0;
+    right:10.6rem;
+}
+#mobile-link2{
+    position: absolute;
+    right:3.7rem;
+}
+#mobile-link3{
+    position: absolute;
+    right:0;
+}
 }
 
 /* # Tablets/Ipads landscape mode */
@@ -427,6 +465,19 @@ footer {
    .pagination{
        margin-top: 3rem;
    }
+   #mobile-link1{
+    position: absolute;
+    top: 0;
+    right:10.6rem;
+}
+#mobile-link2{
+    position: absolute;
+    right:3.7rem;
+}
+#mobile-link3{
+    position: absolute;
+    right:0;
+}
 }
 
  /* # Laptops and Desktops */
