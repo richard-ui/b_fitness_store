@@ -111,6 +111,7 @@
                                                 <p class="small mt-1 mb-0">
                                                     <a href="{% url 'product_detail' product.id %}">Click here for more info!</a>
                                                 </p>
+                                                
                                            {% if request.user.is_superuser %}
                                                 <p class="ml-1">
                                                     <a href="{% url 'edit_product' product.id %}" class="btn btn-info btn-sm">

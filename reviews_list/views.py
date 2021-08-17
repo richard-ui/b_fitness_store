@@ -149,15 +149,3 @@ def delete_review(request, review_id):
         )
     return JsonResponse(data)
 
-
-def auto_review(request):  # autocomplete function for search box
-    if 'term' in request.GET:
-        qs = Reviews_list.objects.filter(
-            product__name__icontains=request.GET.get('term')
-            )
-        titles = list()
-        for review in qs:
-            titles.append(review.product.name)
-
-        return JsonResponse(titles, safe=False)
-    return render(request, 'reviews_list/reviews_list.html')

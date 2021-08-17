@@ -381,18 +381,24 @@ footer {
      #footer-details {
         margin-top: 2.5rem;
    }
-   #mobile-link1{
+   #mobile-search{
         position: absolute;
         top: 0;
         right:10.6rem;
     }
     #mobile-link2{
         position: absolute;
+        top: 0;
         right:3.7rem;
     }
     #mobile-link3{
         position: absolute;
-        right:0;
+        top: 0;
+        right:2rem;
+    }
+    body {
+        background: none;
+        background-color: #8389a5;
     }
 }
 
@@ -406,19 +412,26 @@ footer {
    #home-text{
         display: none !important;
    }
-   #mobile-link1{
+   #mobile-search{
     position: absolute;
     top: 0;
     right:10.6rem;
 }
 #mobile-link2{
     position: absolute;
+    top: 0;
     right:3.7rem;
 }
 #mobile-link3{
     position: absolute;
+    top: 0;
     right:0;
 }
+body {
+    background: none;
+    background-color: #8389a5;
+}
+
 }
 
   /* # Tablets/Ipads portrait mode */
@@ -431,18 +444,24 @@ footer {
    .container {
         margin-top: 1rem;
    }
-   #mobile-link1{
+   #mobile-search{
     position: absolute;
     top: 0;
     right:10.6rem;
 }
 #mobile-link2{
     position: absolute;
+    top: 0;
     right:3.7rem;
 }
 #mobile-link3{
     position: absolute;
+    top: 0;
     right:0;
+}
+body {
+    background: none;
+    background-color: #8389a5;
 }
 }
 
@@ -465,19 +484,21 @@ footer {
    .pagination{
        margin-top: 3rem;
    }
-   #mobile-link1{
+   #mobile-search{
     position: absolute;
     top: 0;
     right:10.6rem;
-}
-#mobile-link2{
-    position: absolute;
-    right:3.7rem;
-}
-#mobile-link3{
-    position: absolute;
-    right:0;
-}
+    }
+    #mobile-link2{
+        position: absolute;
+        top: 0;
+        right:3.7rem;
+    }
+    #mobile-link3{
+        position: absolute;
+        top: 0;
+        right:0;
+    }
 }
 
  /* # Laptops and Desktops */
@@ -506,13 +527,6 @@ footer {
 /* Media Query for Large screens */
 
 @media only screen  and (min-width : 1200px) {
-    
-    /* #footer-details {
-        padding: 1.875em;
-        margin-top: 3rem; 
-        position: fixed; 
-        bottom: 0;
-   } */
     .container {
         max-width: 80%;
         margin-top: 1rem;
