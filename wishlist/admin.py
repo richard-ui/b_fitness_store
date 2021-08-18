@@ -8,7 +8,6 @@ class WishlistAdmin(admin.ModelAdmin):
     list_display = (
         'user',
         'name',
-        'price',
     )
 
 admin.site.register(Wishlist, WishlistAdmin)

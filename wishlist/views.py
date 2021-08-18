@@ -10,14 +10,14 @@ from products.models import Product
 from profiles.models import UserProfile
 from .models import Wishlist
 
-
-def view_wishlist(request, wishlist_id):
+@login_required
+def view_wishlist(request):
     """ A view that renders the wishlist contents page """
 
-    # basic view for displaying wishlist page
-    #wishlist = Wishlist.objects.get(id=wishlist_id)
-
-    wishlist = get_object_or_404(Wishlist, pk=wishlist_id)
+    # basic view for displaying User wishlist page
+    
+    user = UserProfile.objects.get(user=request.user)
+    wishlist = Wishlist.objects.get_or_create(user=user)
     
     context={
         'wishlist': wishlist,
@@ -29,13 +29,24 @@ def view_wishlist(request, wishlist_id):
 @login_required
 def add_to_wishlist(request, product_id):
 
-    product = get_object_or_404(Product, pk=product_id) # get product
-    wish_list = Wishlist.objects.get_or_create(user=request.user, product=product)
-    # wish_list1 = Wishlist.objects.get(pk=1)
-    # wish_list1.product = product
-    wish_list.save()
-    #wish_list.add_to_wishlist(product_id)
+    product_wish = get_object_or_404(Product, pk=product_id) # get product
+    
+    wishlist, created = Wishlist.objects.get_or_create(
+        user=request.user.userprofile,
+        name='rick'
+    ) # get or create user
 
-    messages.success(request, "Wishlist updated!")
+    #if wishlist.products.filter(product_wish).exists():
+    # if wishlist id == product id passed
+    if wishlist.products.filter(id=request.user.id).exists():
+        #wishlist.products.remove(product_wish)
+        messages.warning(request, "Item already added to wishlist")
+    else:
+        wishlist.products.add(product_wish)
+        messages.success(request, "Item added to Wishlist!")
+    #else:
+	#wishlist.products.add(product_wish)
+	#messages.success(request, "Item added to Wishlist!")
+        
 
     return redirect(reverse('products'))

@@ -9,9 +9,8 @@ class WishlistForm(forms.ModelForm):
     class Meta:
         model = Wishlist
         fields = (
-            "product",
+            "products",
             "name",
-            "price",
         )
 
     def __init__(self, *args, **kwargs):
@@ -19,7 +18,6 @@ class WishlistForm(forms.ModelForm):
         placeholders = {
             'product': 'Product...',
             'name': 'add review...',
-            'price': '1-5...',
         }
 
         for field in self.fields:

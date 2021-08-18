@@ -389,12 +389,12 @@ footer {
     #mobile-link2{
         position: absolute;
         top: 0;
-        right:3.7rem;
+        right:3rem;
     }
     #mobile-link3{
         position: absolute;
         top: 0;
-        right:2rem;
+        right:0;
     }
     body {
         background: none;
@@ -425,11 +425,7 @@ footer {
 #mobile-link3{
     position: absolute;
     top: 0;
-    right:0;
-}
-body {
-    background: none;
-    background-color: #8389a5;
+    right:0.5rem;
 }
 
 }
@@ -527,6 +523,7 @@ body {
 /* Media Query for Large screens */
 
 @media only screen  and (min-width : 1200px) {
+
     .container {
         max-width: 80%;
         margin-top: 1rem;
