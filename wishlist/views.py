@@ -15,13 +15,6 @@ def view_wishlist(request):
     """ A view that renders the wishlist contents page """
 
     # basic view for displaying User wishlist page
-
-    #wishlist = Wishlist.objects.get(user=request.user.userprofile)
-
-    #if wishlist.products.filter(id=request.user.id).exists():
-
-    #wishlist = Wishlist.objects.filter(user=user)
-    #wishlist = Wishlist.objects.all()
     
     user = UserProfile.objects.get(user=request.user)
 
