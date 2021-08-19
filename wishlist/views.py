@@ -15,14 +15,15 @@ def view_wishlist(request):
     """ A view that renders the wishlist contents page """
 
     # basic view for displaying User wishlist page
-    
-    user = UserProfile.objects.get(user=request.user)
+
     #wishlist = Wishlist.objects.get(user=request.user.userprofile)
 
     #if wishlist.products.filter(id=request.user.id).exists():
 
     #wishlist = Wishlist.objects.filter(user=user)
     #wishlist = Wishlist.objects.all()
+    
+    user = UserProfile.objects.get(user=request.user)
 
     wishlist = get_object_or_404(Wishlist, user=user)
     
@@ -49,6 +50,20 @@ def add_to_wishlist(request, product_id):
     else:
         wishlist.products.add(product_wish)
         messages.success(request, "Item added to Wishlist!")
+
+    return redirect(reverse('products'))
+
+
+@login_required
+def remove_from_wishlist(request, product_id):
+
+    product_wish = get_object_or_404(Product, pk=product_id) # get product
+    user = UserProfile.objects.get(user=request.user) # get user
+
+    wishlist = get_object_or_404(Wishlist, user=user) # filter wishlist item from with user
+
+    wishlist.products.remove(product_wish) # remove item
+    messages.success(request, 'Product Removed From Wishlist')
 
     return redirect(reverse('products'))
 

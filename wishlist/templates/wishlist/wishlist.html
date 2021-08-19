@@ -20,7 +20,13 @@
                 <h2 class="mb-4">Your Wishlist:</h2>
                 {% for product in wishlist.products.all %}
 
-                    <p>{{ product.name }}</p>
+                    <p class="ml-1">
+                        <i class="fas fa-heart" style="color: #FF0000;"></i> {{ product.name }}
+
+                        <a href="{% url 'remove_from_wishlist' product.id %}" class="btn btn-dark rounded">
+                            Remove
+                        </a>
+                    </p>
 
                 {% endfor %}
                 <hr>
