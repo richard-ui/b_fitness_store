@@ -17,7 +17,14 @@ def view_wishlist(request):
     # basic view for displaying User wishlist page
     
     user = UserProfile.objects.get(user=request.user)
-    wishlist = Wishlist.objects.get_or_create(user=user)
+    #wishlist = Wishlist.objects.get(user=request.user.userprofile)
+
+    #if wishlist.products.filter(id=request.user.id).exists():
+
+    #wishlist = Wishlist.objects.filter(user=user)
+    #wishlist = Wishlist.objects.all()
+
+    wishlist = get_object_or_404(Wishlist, user=user)
     
     context={
         'wishlist': wishlist,
@@ -34,19 +41,14 @@ def add_to_wishlist(request, product_id):
     wishlist, created = Wishlist.objects.get_or_create(
         user=request.user.userprofile,
         name='rick'
-    ) # get or create user
+    )
 
-    #if wishlist.products.filter(product_wish).exists():
-    # if wishlist id == product id passed
-    if wishlist.products.filter(id=request.user.id).exists():
-        #wishlist.products.remove(product_wish)
+
+    if wishlist.products.filter(name=product_wish).exists():
         messages.warning(request, "Item already added to wishlist")
     else:
         wishlist.products.add(product_wish)
         messages.success(request, "Item added to Wishlist!")
-    #else:
-	#wishlist.products.add(product_wish)
-	#messages.success(request, "Item added to Wishlist!")
-        
 
     return redirect(reverse('products'))
+

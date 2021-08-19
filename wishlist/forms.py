@@ -17,7 +17,7 @@ class WishlistForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         placeholders = {
             'product': 'Product...',
-            'name': 'add review...',
+            'name': 'name',
         }
 
         for field in self.fields:

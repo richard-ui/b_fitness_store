@@ -13,7 +13,7 @@ class Wishlist(models.Model):
         blank=True, on_delete=models.SET_NULL
         )
     products = models.ManyToManyField(Product)
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254,  null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
