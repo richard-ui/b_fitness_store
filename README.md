@@ -142,7 +142,7 @@ and purchase.
 - When using responsive websites for testing our application would crash and run a server error. With the help from the Slack community, I downloaded the Chrome extension for x-frame options. Therefore I could use the Responsinator tool
   and 'Am I Responsive'.
 
-- When I was trying to link the product
+- When I was trying to link the Product and Wishlist Model together, I was placing the basic 'import Model' at the top of each Model, as I was running the program, I would receive errors stating there is a 'circular import problem', I looked in Slack and they suggested the reson for the error is that i do noe rquire an import from each model, rather have one link at th top of each Model whcih shouls be enough to link the 2 together.
 
 # Testing
 
