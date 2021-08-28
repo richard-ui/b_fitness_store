@@ -21,12 +21,12 @@ import json
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
-        # special key used from stripe.
+        #  special key used from stripe.
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
             'save_info': request.POST.get('save_info'),
-            'username': request.user,  # current user who is logged in
+            'username': request.user,  #  current user who is logged in
         })
         return HttpResponse(status=200)
     except Exception as e:
@@ -42,12 +42,12 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     if request.method == 'POST':
-        # get bag or create new bag if not exists
+        #  get bag or create new bag if not exists
         bag = request.session.get('bag', {})
 
-        # create form_data dictionary
+        #  create form_data dictionary
 
-        form_data = {                           # takes user form input
+        form_data = {   #  takes user form input
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
@@ -60,20 +60,20 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)  # place form values in order form
 
-        # form validation
+        #  form validation
 
         if order_form.is_valid():
-            order = order_form.save(commit=False)  # form save
+            order = order_form.save(commit=False)  #  form save
             pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid  # place stripe id in order
+            order.stripe_pid = pid  #  place stripe id in order
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():
                 try:
-                    product = Product.objects.get(id=item_id)  # get product
+                    product = Product.objects.get(id=item_id)  #  get product
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
-                            # orderlineitem model fields
+                            #  orderlineitem model fields
                             order=order,
                             product=product,
                             quantity=item_data,
@@ -94,21 +94,21 @@ def checkout(request):
                 in your bag cannot be found in the database!')
                     return redirect(reverse('view_bag'))
 
-            # create session for save_info checkbox
+            #  create session for save_info checkbox
             request.session['save_info'] = 'save-info' in request.POST
 
-            # create session for user's name after form submission
+            #  create session for user's name after form submission
             request.session['save_user'] = request.POST['full_name']
 
             return redirect(
-                # order id
+                #  order id
                 reverse('checkout_success', args=[order.order_number])
                 )
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
-        bag = request.session.get('bag', {})  # if not in bag session
+        bag = request.session.get('bag', {})  #  if not in bag session
         if not bag:
             messages.error(
                 request,
@@ -202,7 +202,7 @@ def checkout_success(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
 
-    # delete bag session
+    #  delete bag session
     if 'bag' in request.session:
         del request.session['bag']
 
@@ -212,3 +212,4 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
