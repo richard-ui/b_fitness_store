@@ -54,7 +54,9 @@ and purchase.
 
 - As a Shopper, I want to be able to view reviews of products.
 
-- As a Shopper, I want to be able to search reviews by specific product, date and rating.
+- As a Shopper, I want to be able to add an item to my Wishlist for future modification and purchase.
+
+- As a Shopper, I want to be able to add an item to my current bag from the Wishlist.
  
 ### Admin goals: 
 
@@ -140,6 +142,8 @@ and purchase.
 - When using responsive websites for testing our application would crash and run a server error. With the help from the Slack community, I downloaded the Chrome extension for x-frame options. Therefore I could use the Responsinator tool
   and 'Am I Responsive'.
 
+- When I was trying to link the product
+
 # Testing
 
 ### User Testing for User Stories
@@ -212,11 +216,13 @@ and purchase.
 
   ii. All reviews will show on the page
 
-- As a Shopper, I want to be able to search reviews by specific product, date and rating.
+- As a Shopper, I want to be able to add an item to my Wishlist for future modification and purchase.
 
-  i. Its clear when entering the reviews page that there is 2 options for the user to search reviews.
-  
-  ii. A textbox appears where the user can type in a product which will bring up results. Alternatively they can use the dropdown menu to sort reviews by date/rating.
+  i. From the product detail page, a 'Love Heart Symbol' is present beside the product selected. When pressed a popup will alert the user whether the item is added or it already exists in their wishlist.
+
+- As a Shopper, I want to be able to add an item to my current bag from the Wishlist.
+
+  i. The add to bag button is present beside each button in the wishlist table, allowing the addition of the product to be entered into the users shopping bag.
 
 ### Admin User's:
 

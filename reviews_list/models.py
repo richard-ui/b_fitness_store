@@ -3,6 +3,7 @@ from products.models import Product
 from profiles.models import UserProfile
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+
 # Create your models here.
 
 
@@ -22,7 +23,8 @@ class Reviews_list(models.Model):
         )
     product = models.ForeignKey(
         Product, null=True,
-        blank=True, on_delete=models.SET_NULL
+        blank=True, on_delete=models.SET_NULL,
+        related_name='reviews'
         )
     review = models.CharField(max_length=254)
     # credits: min and max validators (stack overflow)
@@ -34,3 +36,11 @@ class Reviews_list(models.Model):
 
     def __str__(self):
         return self.review
+
+
+    def save(self, *args, **kwargs):
+
+        self.product.calculate_rating()
+        super().save(*args, **kwargs)
+
+    

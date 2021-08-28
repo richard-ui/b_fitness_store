@@ -28,10 +28,9 @@
                         <table class="table table-sm">
                             <thead class="text-black table-light">
                                 <tr>
-                                    <th scope="col">Product Info</th>
-                                    <th scope="col">Qty</th>
-                                    <th scope="col">Subtotal</th>
-                                    <th scope="col">Price</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Product Image</th>
+                                    <th scope="col"></th>
                                     
                                 </tr>
                             </thead>
@@ -41,7 +40,18 @@
                                     <td class="p-3 w-25">
                                         <i class="fas fa-heart mr-1" style="color: #FF0000;"></i> {{ product.name }}
                                     </td>
-                                    <td class="py-3">
+                                    <td class="p-3 w-25">
+                                        {% if product.image %}
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                    <td class="p-3 w-25">
                                         <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                                             {% csrf_token %}
                                             <div class="form-row">

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 
 class Category(models.Model):
 
@@ -26,8 +27,7 @@ class Product(models.Model):
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     has_shoe_sizes = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    rating = models.DecimalField(
-        max_digits=6, decimal_places=2,
+    rating = models.IntegerField(
         null=True, blank=True
         )
     image_url = models.URLField(max_length=1024, null=True, blank=True)
@@ -35,3 +35,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def calculate_rating(self):
+        self.rating = self.reviews.aggregate(Avg("rating"))
+        self.save()

@@ -81,7 +81,7 @@ def add_review(request):
             instance.user = UserProfile.objects.get(user=request.user)
             instance.save()  # save form instance
             messages.success(request, 'Your Review has been Added!')
-            return redirect(reverse('reviews_list'))
+            return redirect(reverse('products'))
         else:
             messages.error(
                 request,

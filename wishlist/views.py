@@ -37,14 +37,13 @@ def add_to_wishlist(request, product_id):
         name='rick'
     )
 
-
     if wishlist.products.filter(name=product_wish).exists():
         messages.warning(request, "Item already added to wishlist")
+        return redirect(reverse('view_wishlist'))
     else:
         wishlist.products.add(product_wish)
         messages.success(request, "Item added to Wishlist!")
-
-    return redirect(reverse('products'))
+        return redirect(reverse('view_wishlist'))
 
 
 @login_required
@@ -58,5 +57,5 @@ def remove_from_wishlist(request, product_id):
     wishlist.products.remove(product_wish) # remove item
     messages.success(request, 'Product Removed From Wishlist')
 
-    return redirect(reverse('products'))
+    return redirect(reverse('view_wishlist'))
 
