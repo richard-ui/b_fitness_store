@@ -389,12 +389,12 @@ footer {
     #mobile-link2{
         position: absolute;
         top: 0;
-        right:3rem;
+        right:3.2rem;
     }
     #mobile-link3{
         position: absolute;
         top: 0;
-        right:0;
+        right: 0.3rem;
     }
     body {
         background: none;
@@ -459,6 +459,14 @@ body {
     background: none;
     background-color: #8389a5;
 }
+.product-details-container{
+    margin-top: 13rem;
+}
+#add_to_bag{
+    position: absolute;
+    top: 0;
+    right:0;
+}
 }
 
 /* # Tablets/Ipads landscape mode */
@@ -491,6 +499,14 @@ body {
         right:3.7rem;
     }
     #mobile-link3{
+        position: absolute;
+        top: 0;
+        right:0;
+    }
+    .product-details-container{
+        margin-top: 13rem;
+    }
+    #add_to_bag{
         position: absolute;
         top: 0;
         right:0;
