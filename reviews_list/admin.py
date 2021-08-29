@@ -8,7 +8,7 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = (
         'product',
         'review',
-        'rating',
+        'review_rating',
         'date',
     )
 

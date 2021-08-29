@@ -36,17 +36,17 @@ def add_to_bag(request, item_id):
         if item_id in list(bag.keys()):
             #  check if another item of the same id
             # and same size already exists.
-            if size in bag[item_id]['items_by_size'].keys():
+            if size in bag[item_id]['itemsSize'].keys():
                 # if so increment quantity of that size
-                bag[item_id]['items_by_size'][size] += quantity
+                bag[item_id]['itemsSize'][size] += quantity
                 messages.success(  # toast success shows
                     request,
                     f'Updated size {size.upper()} {product.name}'
-                    'quantity to {bag[item_id]["items_by_size"][size]}'
+                    'quantity to {bag[item_id]["itemsSize"][size]}'
                     )
             else:
                 # else just set it to the quantity
-                bag[item_id]['items_by_size'][size] = quantity
+                bag[item_id]['itemsSize'][size] = quantity
                 messages.success(  # toast success shows
                     request,
                     f'Added size {size.upper()} {product.name} to your bag'
@@ -54,7 +54,7 @@ def add_to_bag(request, item_id):
         else:
             # if items not already in the bag, we can just add it
             # with a key of 'items_by_size'
-            bag[item_id] = {'items_by_size': {size: quantity}}
+            bag[item_id] = {'itemsSize': {size: quantity}}
             messages.success(  # toast success message
                 request,
                 f'Added size {size.upper()} {product.name} to your bag'
@@ -92,16 +92,16 @@ def adjust_bag(request, item_id):
     if size:
         if quantity > 0:  # if input quantity greater than 0
             # place quantity input value in bag
-            bag[item_id]['items_by_size'][size] = quantity
+            bag[item_id]['itemsSize'][size] = quantity
             messages.success(
                 request,
                 f'Updated size {size.upper()} {product.name}'
-                'quantity to {bag[item_id]["items_by_size"][size]}'
+                'quantity to {bag[item_id]["itemsSize"][size]}'
                 )
         else:
             # else delete product from bag
-            del bag[item_id]['items_by_size'][size]
-            if not bag[item_id]['items_by_size']:  # if bag with size not set.
+            del bag[item_id]['itemsSize'][size]
+            if not bag[item_id]['itemsSize']:  # if bag with size not set.
                 bag.pop(item_id)  # remove product using pop function
             messages.success(
                 request,
@@ -133,10 +133,10 @@ def remove_from_bag(request, item_id):
 
         if size:  # if product has size delete the product from bag and
             # delete items_by_size
-            del bag[item_id]['items_by_size'][size]
+            del bag[item_id]['itemsSize'][size]
 
             # if does not have items_by_size
-            if not bag[item_id]['items_by_size']:
+            if not bag[item_id]['itemsSize']:
                 bag.pop(item_id)  # delete item_id from bag
             messages.success(
                 request,

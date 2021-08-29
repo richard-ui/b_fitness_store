@@ -28,7 +28,7 @@ class Reviews_list(models.Model):
         )
     review = models.CharField(max_length=254)
     # credits: min and max validators (stack overflow)
-    rating = models.IntegerField( 
+    review_rating = models.IntegerField( 
         choices=RATING_CHOICES, default=1,
         validators=[MinValueValidator(0), MaxValueValidator(5)]
         )
@@ -42,5 +42,9 @@ class Reviews_list(models.Model):
 
         self.product.calculate_rating()
         super().save(*args, **kwargs)
+
+    # @receiver(post_save, sender=Reviews_list)
+    # def update_rating_on_save(sender, instance, created, **kwargs):
+    #     instance.product.calculate_rating()
 
     

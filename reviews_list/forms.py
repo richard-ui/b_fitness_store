@@ -11,7 +11,7 @@ class ReviewForm(forms.ModelForm):
         fields = (
             "product",
             "review",
-            "rating",
+            "review_rating",
         )
 
     def __init__(self, *args, **kwargs):
@@ -19,7 +19,7 @@ class ReviewForm(forms.ModelForm):
         placeholders = {
             'product': 'Product...',
             'review': 'add review...',
-            'rating': '1-5...',
+            'review_rating': '1-5...',
         }
         self.fields['product'].widget.attrs['autofocus'] = True
 

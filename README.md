@@ -148,6 +148,10 @@ and purchase.
   <br/>
   <del>`from wishlist.models import Wishlist`</del>
 
+- Template errors. When using the HTML Validator there would be obvious template errors from using Django. This is considered okay because we were only validating the html side of things.
+
+  ![Template Errors](/media/template_errors.png)
+
 # Testing
 
 ### User Testing for User Stories
@@ -340,6 +344,8 @@ Forking the repsoitory means we are making a copy of the original version to edi
 - To help me with displaying the autocomplete suggestions infront of the navigation bar, I used [Stack Overflow](https://stackoverflow.com/questions/6762174/jquery-uis-autocomplete-not-display-well-z-index-issue) 
 - Credited the autocomplete search functionality from '[codebands](https://www.youtube.com/watch?v=-oLVZp1NQVE)' channel on Youtube.
 - Used Code from this website to provide the page with pagination options. [Django Pagination](https://simpleisbetterthancomplex.com/tutorial/2016/08/03/how-to-paginate-with-django.html)
+- This Link from Stack Overflow was used to figure out how to reference between 2 models, using a foreign key. Also contributed into making Many To Many relationShips and looping through the field.
+[Model Key Relations](https://codereview.stackexchange.com/questions/194906/cleanest-way-to-get-list-of-django-objects-that-have-same-foreign-key-and-displa?fbclid=IwAR3_i4xrdstoiO0xqYET1_-VFzlPH3CHyLqPuaHYkZj6c2c-kVe_aWO07M0)
 
 
 # Acknowledgements

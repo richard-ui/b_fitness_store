@@ -37,5 +37,8 @@ class Product(models.Model):
         return self.name
 
     def calculate_rating(self):
-        self.rating = self.reviews.aggregate(Avg("rating"))
+        self.rating = self.reviews.aggregate(Avg("review_rating"))
         self.save()
+
+    # def avg_rating(self):
+    #     return Reviews_list.objects.filter(product__id=self.id).aggregate(Avg('rating'))

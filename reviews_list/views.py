@@ -12,62 +12,6 @@ from django.template.loader import render_to_string
 # Create your views here.
 
 
-def all_reviews(request):
-    """ A view to show all products, including sorting and search queries """
-
-    # set all variables to none at first
-
-    reviews = Reviews_list.objects.all()  # fetch reviews
-    query = None
-    sort = None
-    direction = None
-
-    # search request function
-    if request.GET:
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
-            sort = sortkey
-            if sortkey == 'product':
-                sortkey = 'lower_name'
-                # convert to lowercase
-                reviews = reviews.annotate(lower_name=Lower('product'))
-            if sortkey == 'product':  # take current category of product
-                sortkey = 'product__name'
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    # order products in descending order
-                    sortkey = f'-{sortkey}'
-                    # order by products from value of sortkey
-            reviews = reviews.order_by(sortkey)
-
-        if 'q' in request.GET: 
-            query = request.GET['q']  # listens for input
-            if not query:  # if query is empty provide error
-                messages.error(
-                    request,
-                    "You didn't enter any search criteria!"
-                    )
-                return redirect(reverse('reviews_list'))
-
-            # listen for search queries that are the same as
-            # Product 'name' or 'description'
-            queries = (
-                Q(product__name__icontains=query)
-            )
-            reviews = reviews.filter(queries)  # filter out products
-
-    current_sorting = f'{sort}_{direction}'
-
-    context = {
-        'reviews': reviews,
-        'search_term': query,  # search box
-        'current_sorting': current_sorting,
-    }
-
-    return render(request, 'reviews_list/reviews_list.html', context)
-
-
 @login_required
 def add_review(request):
 
