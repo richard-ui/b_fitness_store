@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load product_tags %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -85,11 +86,8 @@
                                                     <h5><span class="badge badge-warning">New</span></h5>
                                                 </p>
                                             {% endif %}
-                                            {% if product.rating %}
-                                                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                                            {% else %}
-                                                <small class="text-muted">No Rating</small>
-                                            {% endif %}
+
+                                            {% calculate_rating product %}
 
                                             <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                                                 {% csrf_token %}

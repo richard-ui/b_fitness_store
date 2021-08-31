@@ -37,14 +37,4 @@ class Reviews_list(models.Model):
     def __str__(self):
         return self.review
 
-
-    # def save(self, *args, **kwargs):
-
-    #     self.product.calculate_rating()
-    #     super().save(*args, **kwargs)
-
-    # @receiver(post_save, sender=Reviews_list)
-    # def update_rating_on_save(sender, instance, created, **kwargs):
-    #     instance.product.calculate_rating()
-
     

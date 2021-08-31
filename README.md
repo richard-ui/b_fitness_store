@@ -112,9 +112,10 @@ and purchase.
 | Search function   | The Users are able to search the product by 'Name' or 'Description'. This function is available whether a user is logged in or not.  |
 | Add Product to bag   | Users can add as many products as they like to the bag which they can then view in the shop bag page to review.  |
 | Remove Product from bag | A User can delete existing product from bag.  |
-| Update bag | A User can update their bag by updating the products quantity.  |
-| Search Reviews | A user can search for review using textbox, Alternatively search from selection box which orders by fields in db | 
+| Update bag | A User can update their bag by updating the products quantity.  | 
 | Add Review | A User can add review for a product they like or dislike. A form requires them to add a rating and a descriptive review. |
+| Add to Wishlist | A User can add a product they like to their current Wishlist. This is added by using the Wishlist icon on the product detail page. |
+| Remove from Wishlist | A User can remove a product from their Wishlist with a red button being present to remove it. |
 
 # Bugs
 

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load product_tags %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -37,11 +38,9 @@
                         </a>
                     </p>
                     {% endif %}
-                    {% if product.rating %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                    {% else %}
-                        <small class="text-muted">No Rating</small>
-                    {% endif %}
+
+                    {% calculate_rating product %}
+
                     {% if request.user.is_superuser %}
                         <small class="ml-3">
                             <a href="{% url 'edit_product' product.id %}" class="btn btn-info btn-sm">
