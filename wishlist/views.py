@@ -18,7 +18,8 @@ def view_wishlist(request):
     
     user = UserProfile.objects.get(user=request.user)
 
-    wishlist = get_object_or_404(Wishlist, user=user)
+    #wishlist = get_object_or_404(Wishlist, user=user)
+    wishlist = Wishlist.objects.get_or_create(user=user)
     
     context={
         'wishlist': wishlist,
