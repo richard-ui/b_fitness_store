@@ -135,8 +135,10 @@
         
         <h2 class="p-2">Reviews</h2>
         <div class="col-12 col-md-3 my-3">
-            <a href="{% url 'add_review' %}">Click here to Add review!</a>
+            <a href="{% url 'add_review' product.id %}">Click here to Add review!</a>
         </div>
+
+        
         <div class="row">
             {% for review in reviews %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-3">

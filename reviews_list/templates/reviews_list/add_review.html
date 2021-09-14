@@ -17,18 +17,18 @@
         <div class="row container-top-reviews">
             <div class="col-12 col-md-6">
                 <hr>
-                <h2 class="mb-4">Add Review</h2>
-                <h5 class="text-muted">Add a Product Review</h5>
+                <h2 class="mb-4">Add Product Review</h2>
                 <hr>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'add_review' %}" class="form mb-2" enctype="multipart/form-data"> 
+                <form method="POST" action="{% url 'add_review' product.id %}" class="form mb-2" enctype="multipart/form-data"> 
                     {% csrf_token %}
                     
-                    {{ form.product|as_crispy_field }}
+                    <h5>Adding Review for {{ product.name }}</h5>
+
                     {{ form.review_rating|as_crispy_field }}
                     {{ form.review|as_crispy_field }}
                     

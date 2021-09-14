@@ -2,6 +2,7 @@ from django import forms
 from .models import Reviews_list
 from products.models import Product
 from django.forms import TextInput, Textarea
+from django.utils.translation import gettext_lazy as _
 
 
 class ReviewForm(forms.ModelForm):
@@ -13,6 +14,10 @@ class ReviewForm(forms.ModelForm):
             "review",
             "review_rating",
         )
+
+        labels = {
+            'product': _('Product Name'),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -32,3 +37,4 @@ class ReviewForm(forms.ModelForm):
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'border-black rounded-0'
+            

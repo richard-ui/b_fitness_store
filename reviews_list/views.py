@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Reviews_list
 from .forms import ReviewForm
+from products.models import Product
 from profiles.models import UserProfile
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -13,9 +14,11 @@ from django.template.loader import render_to_string
 
 
 @login_required
-def add_review(request):
+def add_review(request, product_id):
 
     """ Add a Review for a product """
+
+    product = get_object_or_404(Product, id=product_id) # get product    
 
     if request.method == 'POST':  # validate form
         form = ReviewForm(request.POST)
@@ -23,9 +26,11 @@ def add_review(request):
             instance = form.save(commit=False)  # form save/form
             # user session
             instance.user = UserProfile.objects.get(user=request.user)
+            instance.product = product
             instance.save()  # save form instance
+            
             messages.success(request, 'Your Review has been Added!')
-            return redirect(reverse('products'))
+            return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(
                 request,
@@ -37,6 +42,7 @@ def add_review(request):
     template = 'reviews_list/add_review.html'  # render add reviews page
     context = {
         'form': form,
+        'product': product,
     }
 
     return render(request, template, context)
@@ -54,7 +60,7 @@ def edit_review(request, review_id):
         if form.is_valid():  # check for form validation
             form.save()
             messages.success(request, 'Successfully updated Review!')
-            return redirect(reverse('products', args=[review.id]))
+            return redirect(reverse('products'))
         else:
             messages.error(
                 request,

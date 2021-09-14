@@ -18,8 +18,19 @@ def view_wishlist(request):
     
     user = UserProfile.objects.get(user=request.user)
 
-    #wishlist = get_object_or_404(Wishlist, user=user)
-    wishlist = Wishlist.objects.get_or_create(user=user)
+    # wishlist = get_object_or_404(Wishlist, user=user)
+
+    try:
+        wishlist = Wishlist.objects.get(user=user)
+    except Wishlist.DoesNotExist:
+        wishlist = None
+        messages.warning(request, "No items in the Wishlist yet!")
+    if wishlist:
+    # user exist
+        pass
+    else:
+    # user does not exist
+        pass
     
     context={
         'wishlist': wishlist,
