@@ -153,6 +153,10 @@ and purchase.
 
   ![Template Errors](/media/template_errors.png)
 
+- When the User Entered the 'Add Review' Page the way they could select a Product there was a Dropdown with all the Products inside it. I was Advised that this was an Odd choice of UX design to select a Product. Therefore I removed the dropdown list and instead use a Product instance when the Form is POSTED using the `def add_review` function. This seemed like a much better approach.
+
+  ![Product instance](/media/product_instance.png)
+
 # Testing
 
 ### User Testing for User Stories
