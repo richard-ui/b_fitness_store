@@ -246,7 +246,9 @@
             });
         });
 
-        $("#modal-product").on("submit", ".js-product-delete-form");
+        $(".js-product-delete-form").on("submit", function(){
+            $("#modal-product").modal("show");
+        })
 
         });
     </script>
