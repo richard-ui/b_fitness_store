@@ -114,6 +114,7 @@ and purchase.
 | Remove Product from bag | A User can delete existing product from bag.  |
 | Update bag | A User can update their bag by updating the products quantity.  | 
 | Add Review | A User can add review for a product they like or dislike. A form requires them to add a rating and a descriptive review. |
+| Edit Review | A User can edit a review for a product. A form requires them to edit a rating and a descriptive review. |
 | Add to Wishlist | A User can add a product they like to their current Wishlist. This is added by using the Wishlist icon on the product detail page. |
 | Remove from Wishlist | A User can remove a product from their Wishlist with a red button being present to remove it. |
 
