@@ -4,6 +4,7 @@ from django.db import models
 
 
 class Product_item(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=124)
     qty = models.IntegerField()
 

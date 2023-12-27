@@ -46,7 +46,7 @@ def add_to_wishlist(request, product_id):
     
     wishlist, created = Wishlist.objects.get_or_create(
         user=request.user.userprofile,
-        name='rick'
+        name='rick' # rick by default.
     )
 
     if wishlist.products.filter(name=product_wish).exists():

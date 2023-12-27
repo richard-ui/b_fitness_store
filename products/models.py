@@ -5,7 +5,8 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
-
+        
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -17,6 +18,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    id = models.AutoField(primary_key=True)
     category = models.ForeignKey(
         'Category', null=True,
         blank=True, on_delete=models.SET_NULL

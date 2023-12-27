@@ -13,7 +13,7 @@ from profiles.models import UserProfile
 class Order(models.Model):
 
     # order table fields which also links to userprofile
-
+    id = models.AutoField(primary_key=True)
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(
         UserProfile, on_delete=models.SET_NULL,
@@ -85,6 +85,7 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    id = models.AutoField(primary_key=True)
     order = models.ForeignKey(
         Order, null=False,
         blank=False, on_delete=models.CASCADE,
