@@ -18,7 +18,7 @@ from .forms import ProductForm
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
-    products = Product.objects.all()  # fetch all products
+    products = Product.objects.all()  # fetch all products from model.
     query = None
     categories = None
     sort = None
@@ -77,7 +77,7 @@ def all_products(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
     context = {
-        'products': products,
+        'productItems': products, # display products on products.html.
         'search_term': query,  # search box
         'current_categories': categories,
         'current_sorting': current_sorting,

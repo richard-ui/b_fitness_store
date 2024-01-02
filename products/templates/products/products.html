@@ -50,12 +50,12 @@
                             {% if search_term or current_categories or current_sorting != 'None_None' %}
                                 <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
                             {% endif %}
-                            {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                            {{ productItems|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                         </p>
                     </div>
                 </div>
                 <div class="row">
-                    {% for product in products %}
+                    {% for product in productItems %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100" style="border-style: groove; border-width: thick;">
                                 {% if product.image %}
@@ -88,7 +88,7 @@
                                             {% endif %}
 
                                             {% calculate_rating product %}
-
+                                            
                                             <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                                                 {% csrf_token %}
                                                 <div class="form-row">
@@ -153,23 +153,23 @@
 
         <!-- pagination for products -->
         
-        {% if products.has_other_pages %}
+        {% if productItems.has_other_pages %}
             <ul class="pagination justify-content-center">
-                {% if products.has_previous %}
+                {% if productItems.has_previous %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a>
                     </li>
                 {% else %}
                     <li class="disabled"><span>&laquo;</span></li>
                 {% endif %}
-                {% for i in products.paginator.page_range %}
-                    {% if products.number == i %}
+                {% for i in productItems.paginator.page_range %}
+                    {% if productItems.number == i %}
                         <li class="page-item active"><span class="page-link">{{ i }} <span class="sr-only">(current)</span></span></li>
                     {% else %}
                     <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
                     {% endif %}
                 {% endfor %}
-                {% if products.has_next %}
+                {% if productItems.has_next %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
                     </li>
@@ -215,8 +215,8 @@
                 var sort = selectedVal.split("_")[0];
                 var direction = selectedVal.split("_")[1];
 
-                currentUrl.searchParams.set("sort", sort);
-                currentUrl.searchParams.set("direction", direction);
+                currentUrl.searchParams.set("sort", sort); // e.g. price
+                currentUrl.searchParams.set("direction", direction); // e.g. descending 
 
                 window.location.replace(currentUrl);
             } else {
